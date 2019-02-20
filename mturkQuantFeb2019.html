@@ -1,0 +1,459 @@
+<style type="text/css">#pageContainer {
+  width: 1200px;
+  height: 800px;
+  margin-left: 60px;
+  margin-top: 10px;
+}
+
+
+#dataContainer {
+  display: flex;
+  justify-content: center;
+}
+
+#movieArea1 {
+  width: 400px;
+  height: 400px;
+  padding-left: 10px;
+  padding-right: 10px;
+  background: black;
+	border-style: solid;
+	border-width: 10px;
+	border-color: #AAAAAA;
+	margin:0px;
+	float:left;
+}
+
+#ratingArea{
+    width: 405px;
+    height: 400px;
+    padding-left: 10px;
+    padding-right: 10px;
+}
+
+
+.sliderBar{
+	clear: both;
+	width: 200px;
+	padding-top: 3px;
+	padding-bottom: 2px;
+}
+
+.triangle{
+	width:0;
+	height: 0;
+	border-right: 200px solid transparent;
+	border-bottom: 13px solid #FFA6A6;
+	opacity: 0.7;
+}
+
+.invertedTriangle{
+	width:0;
+	height: 0;
+	border-left: 200px solid transparent;
+	border-top: 13px solid #99D6AD;
+	opacity: 0.7;
+}
+
+.attributeDiv{
+	font-size:16px;
+	height:10px;
+	color: black;
+}
+
+.sliderDiv{
+	font-size:4;
+	height:40px;
+}
+
+#instructionBox{
+	clear: both;
+	font-size: 17px;
+	color: red;
+}
+
+#labelDescriptions{
+	clear: both;
+	font-size: 16px;
+	color: #000000;
+}
+.label{
+	clear: both;
+	font-size: 16px;
+	color: #993300;
+	padding-left: 130px;
+}
+.label2{
+	color: #993300;
+}
+
+}
+</style>
+<script type='text/javascript'>
+window.onload = function() {document.getElementById('add').setAttribute('onclick', 'return validateForm()'); }
+
+var params = [
+  "control",
+  "influence",
+  "large",
+  "diverse",
+  "united",
+  "disagree",
+  "friendly",
+  "familiar"
+];
+
+function validateForm() {
+  // check free response area has enough words.
+  var free_response_area = document.getElementsByName('freeResponseArea');
+  if(free_response_area[0].value.split(' ').length < 10) {
+      alert("Please write more than 10 words about what you think she is saying about the group.")
+      return false;
+  }
+
+  var checks = [];
+  // iterate through params
+  var quant_checks = false;
+  for (var i = 0; i < params.length; i++) {
+    var element = document.getElementsByName(params[i]);
+    // iterate through param choices
+    for (var j = 0; j < element.length; j++) {
+      if (element[j].checked) {
+        checks[i] = true;
+      }
+    }
+    if (!checks[i]) {
+      alert("Please choose a value for " + params[i]);
+      return false;
+    }
+  }
+  quant_checks = true;
+
+  return quant_checks;
+}
+
+function hideShowInstructions(){
+var instructBox = document.getElementById('instructionBox');
+if(instructBox.style.display == 'none')
+{
+	instructBox.style.display = 'block';
+	instructBox.hidden = false;
+}
+else
+{
+	instructBox.style.display = 'none';
+	instructBox.hidden = true;
+}
+}
+</script>
+<div id="pageContainer">
+<table>
+	<tbody>
+		<tr>
+			<td>
+			<h2>Interpret Gestures</h2>
+			</td>
+			<td><input id="hideShow" name="hideShow" onclick="hideShowInstructions();" type="button" value="Hide/Show instructions" /></td>
+		</tr>
+	</tbody>
+</table>
+
+<div id="instructionBox" style="">
+<p id="instructions">IMPORTANT: If you already completed a similar study in the past, please do not accept the HIT. It is crucial for our research that each separate batch of videos is rated by different workers. If you rate videos in different batches, we are afraid we will need to reject your HITs.</p>
+
+<p class="label2">Please read the description of the scene, watch the videos, and answer the questions below.  Feel free to watch the video as many times as you like.
+
+Please do not pay attention to the speaker's face -- pay attention only to the gestures. </p>
+
+<div>&nbsp;</div>
+</div>
+
+
+<div id="movieArea1">
+<video controls="" height="400" id="video1" tabindex="0" width="400"><!--<source src="C:\NIIStudyVideos\pre-post source\J01-pre.mp4"/>--><source src="${URL_VIDEO}" /> <!--source src="C:/Users/Juggling Jack/D Drive/Public Speaking/previewConverted.mp4" type="video/mp4"--><!--source src="rtmp://s2j00tovztwg6f.cloudfront.net/cfx/st/mp4:73jzhE8R1TQ_x264.mp4" type="video/mp4"--><!--source src="file:///C:\Users\park\Desktop\web_annotation_tool\experiments\youtube_movie_reviews\selected_videos\mp4\73jzhE8R1TQ_x264.mp4" type="video/mp4"--><!--source src="file:///C:\Users\park\Desktop\web_annotation_tool\experiments\youtube_movie_reviews\selected_videos\mp4_1min\yMQ9WeIZTNU_x264_1min.mp4" type="video/mp4"--><!--source src="file:///C:/Users/park/Desktop/Af8D0E4ZXaw_libtheora.ogv" type="video/ogg"--><!--source src="file:///C:/Users/park/Desktop/Af8D0E4ZXaw_libtheora.ogv" type="video/ogg"--><!--<source src="file:///C:\Users\park\Desktop\colour_3.26.2012_10.56_pt1_VP8.webm" type="video/webm"--><!--source src="https://s3.amazonaws.com/webtool_experiment/videos_webm_inhouse/yMQ9WeIZTNU_VP8.webm" type="video/webm"--></video>
+&nbsp;
+&nbsp;
+</div>
+
+<div style="text-align:center">
+<table>
+	<tbody>
+		<tr>
+			<td>
+			<div align="center" style="padding:15px" class="label2">She is talking about a group of people. What do you think she is saying about them? Please write 2-3 sentences (at least 10 words).</div>
+			</td>
+			<br>
+			<td><input name="freeResponseArea" style="width:400px; height:200px" type="text" value="" /></td>
+		</tr>
+	</tbody>
+</table>
+
+
+<!-- TODO: Tidy this up -->
+
+<!-- Control -->
+<div align="center" id="dataContainer">
+<div height="400" id="ratingArea" width="400">
+<div align="center" class="label2">On a scale from 1 to 7, how much <b>control</b> do you think she has over this group of people?</div>
+<table>
+	<tbody>
+		<tr>
+			<td align="center" class="attributeDiv">None at all</td>
+			<td align="center" class="attributeDiv">1</td>
+			<td align="center" class="attributeDiv">2</td>
+			<td align="center" class="attributeDiv">3</td>
+			<td align="center" class="attributeDiv">4</td>
+			<td align="center" class="attributeDiv">5</td>
+			<td align="center" class="attributeDiv">6</td>
+			<td align="center" class="attributeDiv">7</td>
+			<td align="center" class="attributeDiv">Very much</td>
+		</tr>
+		<tr>
+			<td>&nbsp;</td>
+			<td><input name="control" type="radio" value="1" /></td>
+			<td><input name="control" type="radio" value="2" /></td>
+			<td><input name="control" type="radio" value="3" /></td>
+			<td><input name="control" type="radio" value="4" /></td>
+			<td><input name="control" type="radio" value="5" /></td>
+			<td><input name="control" type="radio" value="6" /></td>
+			<td><input name="control" type="radio" value="7" /></td>
+			<td>&nbsp;</td>
+		</tr>
+	</tbody>
+</table>
+
+<!-- Influence -->
+<div align="center" id="dataContainer">
+<div height="400" id="ratingArea" width="400">
+<div align="center" class="label2">On a scale from 1 to 7, how much <b>influence</b> do you think she has over this group of people?</div>
+<table>
+	<tbody>
+		<tr>
+			<td align="center" class="attributeDiv">None at all</td>
+			<td align="center" class="attributeDiv">1</td>
+			<td align="center" class="attributeDiv">2</td>
+			<td align="center" class="attributeDiv">3</td>
+			<td align="center" class="attributeDiv">4</td>
+			<td align="center" class="attributeDiv">5</td>
+			<td align="center" class="attributeDiv">6</td>
+			<td align="center" class="attributeDiv">7</td>
+			<td align="center" class="attributeDiv">Very much</td>
+		</tr>
+		<tr>
+			<td>&nbsp;</td>
+			<td><input name="influence" type="radio" value="1" /></td>
+			<td><input name="influence" type="radio" value="2" /></td>
+			<td><input name="influence" type="radio" value="3" /></td>
+			<td><input name="influence" type="radio" value="4" /></td>
+			<td><input name="influence" type="radio" value="5" /></td>
+			<td><input name="influence" type="radio" value="6" /></td>
+			<td><input name="influence" type="radio" value="7" /></td>
+			<td>&nbsp;</td>
+		</tr>
+	</tbody>
+</table>
+
+<!-- Large -->
+<div align="center" id="dataContainer">
+<div height="400" id="ratingArea" width="400">
+<div align="center" class="label2">On a scale from 1 to 7, how <b>large</b> do you think this group of people is?</div>
+<table>
+	<tbody>
+		<tr>
+			<td align="center" class="attributeDiv">Very small</td>
+			<td align="center" class="attributeDiv">1</td>
+			<td align="center" class="attributeDiv">2</td>
+			<td align="center" class="attributeDiv">3</td>
+			<td align="center" class="attributeDiv">4</td>
+			<td align="center" class="attributeDiv">5</td>
+			<td align="center" class="attributeDiv">6</td>
+			<td align="center" class="attributeDiv">7</td>
+			<td align="center" class="attributeDiv">Very large</td>
+		</tr>
+		<tr>
+			<td>&nbsp;</td>
+			<td><input name="large" type="radio" value="1" /></td>
+			<td><input name="large" type="radio" value="2" /></td>
+			<td><input name="large" type="radio" value="3" /></td>
+			<td><input name="large" type="radio" value="4" /></td>
+			<td><input name="large" type="radio" value="5" /></td>
+			<td><input name="large" type="radio" value="6" /></td>
+			<td><input name="large" type="radio" value="7" /></td>
+			<td>&nbsp;</td>
+		</tr>
+	</tbody>
+</table>
+
+<!-- Diverse -->
+<div align="center" id="dataContainer">
+<div height="400" id="ratingArea" width="400">
+<div align="center" class="label2">On a scale from 1 to 7, how <b>diverse</b> do you think this group of people is?</div>
+<table>
+	<tbody>
+		<tr>
+			<td align="center" class="attributeDiv">None at all</td>
+			<td align="center" class="attributeDiv">1</td>
+			<td align="center" class="attributeDiv">2</td>
+			<td align="center" class="attributeDiv">3</td>
+			<td align="center" class="attributeDiv">4</td>
+			<td align="center" class="attributeDiv">5</td>
+			<td align="center" class="attributeDiv">6</td>
+			<td align="center" class="attributeDiv">7</td>
+			<td align="center" class="attributeDiv">Extremely</td>
+		</tr>
+		<tr>
+			<td>&nbsp;</td>
+			<td><input name="diverse" type="radio" value="1" /></td>
+			<td><input name="diverse" type="radio" value="2" /></td>
+			<td><input name="diverse" type="radio" value="3" /></td>
+			<td><input name="diverse" type="radio" value="4" /></td>
+			<td><input name="diverse" type="radio" value="5" /></td>
+			<td><input name="diverse" type="radio" value="6" /></td>
+			<td><input name="diverse" type="radio" value="7" /></td>
+			<td>&nbsp;</td>
+		</tr>
+	</tbody>
+</table>
+
+<!-- united -->
+<div align="center" id="dataContainer">
+<div height="400" id="ratingArea" width="400">
+<div align="center" class="label2">On a scale from 1 to 7, how <b>united</b> do you think this group of people is?</div>
+<table>
+	<tbody>
+		<tr>
+			<td align="center" class="attributeDiv">None at all</td>
+			<td align="center" class="attributeDiv">1</td>
+			<td align="center" class="attributeDiv">2</td>
+			<td align="center" class="attributeDiv">3</td>
+			<td align="center" class="attributeDiv">4</td>
+			<td align="center" class="attributeDiv">5</td>
+			<td align="center" class="attributeDiv">6</td>
+			<td align="center" class="attributeDiv">7</td>
+			<td align="center" class="attributeDiv">Extremely</td>
+		</tr>
+		<tr>
+			<td>&nbsp;</td>
+			<td><input name="united" type="radio" value="1" /></td>
+			<td><input name="united" type="radio" value="2" /></td>
+			<td><input name="united" type="radio" value="3" /></td>
+			<td><input name="united" type="radio" value="4" /></td>
+			<td><input name="united" type="radio" value="5" /></td>
+			<td><input name="united" type="radio" value="6" /></td>
+			<td><input name="united" type="radio" value="7" /></td>
+			<td>&nbsp;</td>
+		</tr>
+	</tbody>
+</table>
+
+<!-- disagree -->
+<div align="center" id="dataContainer">
+<div height="400" id="ratingArea" width="400">
+<div align="center" class="label2">On a scale from 1 to 7, how much do you think these people <b>disagree</b> with one another?</div>
+<table>
+	<tbody>
+		<tr>
+			<td align="center" class="attributeDiv">None at all</td>
+			<td align="center" class="attributeDiv">1</td>
+			<td align="center" class="attributeDiv">2</td>
+			<td align="center" class="attributeDiv">3</td>
+			<td align="center" class="attributeDiv">4</td>
+			<td align="center" class="attributeDiv">5</td>
+			<td align="center" class="attributeDiv">6</td>
+			<td align="center" class="attributeDiv">7</td>
+			<td align="center" class="attributeDiv">Very much</td>
+		</tr>
+		<tr>
+			<td>&nbsp;</td>
+			<td><input name="disagree" type="radio" value="1" /></td>
+			<td><input name="disagree" type="radio" value="2" /></td>
+			<td><input name="disagree" type="radio" value="3" /></td>
+			<td><input name="disagree" type="radio" value="4" /></td>
+			<td><input name="disagree" type="radio" value="5" /></td>
+			<td><input name="disagree" type="radio" value="6" /></td>
+			<td><input name="disagree" type="radio" value="7" /></td>
+			<td>&nbsp;</td>
+		</tr>
+	</tbody>
+</table>
+
+<!-- friendly -->
+<div align="center" id="dataContainer">
+<div height="400" id="ratingArea" width="400">
+<div align="center" class="label2">On a scale from 1 to 7, how <b>friendly</b> do you think she feels towards this group of people?</div>
+<table>
+	<tbody>
+		<tr>
+			<td align="center" class="attributeDiv">None at all</td>
+			<td align="center" class="attributeDiv">1</td>
+			<td align="center" class="attributeDiv">2</td>
+			<td align="center" class="attributeDiv">3</td>
+			<td align="center" class="attributeDiv">4</td>
+			<td align="center" class="attributeDiv">5</td>
+			<td align="center" class="attributeDiv">6</td>
+			<td align="center" class="attributeDiv">7</td>
+			<td align="center" class="attributeDiv">Very much</td>
+		</tr>
+		<tr>
+			<td>&nbsp;</td>
+			<td><input name="friendly" type="radio" value="1" /></td>
+			<td><input name="friendly" type="radio" value="2" /></td>
+			<td><input name="friendly" type="radio" value="3" /></td>
+			<td><input name="friendly" type="radio" value="4" /></td>
+			<td><input name="friendly" type="radio" value="5" /></td>
+			<td><input name="friendly" type="radio" value="6" /></td>
+			<td><input name="friendly" type="radio" value="7" /></td>
+			<td>&nbsp;</td>
+		</tr>
+	</tbody>
+</table>
+
+<!-- familiar -->
+<div align="center" id="dataContainer">
+<div height="400" id="ratingArea" width="400">
+<div align="center" class="label2">On a scale from 1 to 7, how <b>familiar</b> do you think she is with this group of people?</div>
+<table>
+	<tbody>
+		<tr>
+			<td align="center" class="attributeDiv">None at all</td>
+			<td align="center" class="attributeDiv">1</td>
+			<td align="center" class="attributeDiv">2</td>
+			<td align="center" class="attributeDiv">3</td>
+			<td align="center" class="attributeDiv">4</td>
+			<td align="center" class="attributeDiv">5</td>
+			<td align="center" class="attributeDiv">6</td>
+			<td align="center" class="attributeDiv">7</td>
+			<td align="center" class="attributeDiv">Very much</td>
+		</tr>
+		<tr>
+			<td>&nbsp;</td>
+			<td><input name="familiar" type="radio" value="1" /></td>
+			<td><input name="familiar" type="radio" value="2" /></td>
+			<td><input name="familiar" type="radio" value="3" /></td>
+			<td><input name="familiar" type="radio" value="4" /></td>
+			<td><input name="familiar" type="radio" value="5" /></td>
+			<td><input name="familiar" type="radio" value="6" /></td>
+			<td><input name="familiar" type="radio" value="7" /></td>
+			<td>&nbsp;</td>
+		</tr>
+	</tbody>
+</table>
+
+
+<div style="text-align:center">
+<table>
+	<tbody>
+		<tr>
+			<td>
+			<div align="center" style="padding:15px" class="label2">Write any meta-comments here (<i>ex</i> broken video)</div>
+			</td>
+			<td><input name="commentsArea" style="width:200px" type="text" value="" /></td>
+			<td><input id="add" name="add" type="submit" value="Submit" /></td>
+		</tr>
+	</tbody>
+</table>
+<input name="vid_id" type="hidden" value="${URL_VIDEO}" /> <input name="number_clicks" type="hidden" value="0" /></div>
+</div>
+
+</div>
+</div>
