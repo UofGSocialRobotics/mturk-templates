@@ -93,44 +93,44 @@
 window.onload = function() {document.getElementById('add').setAttribute('onclick', 'return validateForm()'); }
 
 var params = [
-  "control",
-  "influence",
-  "large",
-  "diverse",
-  "united",
-  "disagree",
-  "friendly",
-  "familiar"
+  "tension",
+  "getalong",
+  "buttheads",
+  "unified",
+  "disagreement",
+  "worktogether",
+  "goal"
 ];
 
 function validateForm() {
   // check free response area has enough words.
-  var free_response_area = document.getElementsByName('freeResponseArea');
-  if(free_response_area[0].value.split(' ').length < 10) {
-      alert("Please write more than 10 words about what you think she is saying about the group.")
-      return false;
-  }
-  return true
-  // UNCOMMENT for checking quant variables are filled out.
-  // var checks = [];
-  // // iterate through params
-  // var quant_checks = false;
-  // for (var i = 0; i < params.length; i++) {
-  //   var element = document.getElementsByName(params[i]);
-  //   // iterate through param choices
-  //   for (var j = 0; j < element.length; j++) {
-  //     if (element[j].checked) {
-  //       checks[i] = true;
-  //     }
-  //   }
-  //   if (!checks[i]) {
-  //     alert("Please choose a value for " + params[i]);
+  // var free_response_area = document.getElementsByName('freeResponseArea');
+  // if(free_response_area[0].value.split(' ').length < 10) {
+  //     alert("Please write more than 10 words about what you think she is saying about the group.")
   //     return false;
-  //   }
   // }
-  // quant_checks = true;
+  // return true
+  // UNCOMMENT for checking quant variables are filled out.
+  var checks = [];
+  // iterate through params
+  var quant_checks = false;
+  for (var i = 0; i < params.length; i++) {
+    var element = document.getElementsByName(params[i]);
+    // iterate through param choices
+    for (var j = 0; j < element.length; j++) {
+      if (element[j].checked) {
+        checks[i] = true;
+      }
+      console.log(checks[i])
+    }
+    if (!checks[i]) {
+      alert("Please choose a value for " + params[i]);
+      return false;
+    }
+  }
+  quant_checks = true;
 
-  // return quant_checks;
+  return quant_checks;
 }
 
 function hideShowInstructions(){
@@ -216,13 +216,13 @@ Please <b>do not</b> pay attention to the speaker's face -- pay attention only t
   		</tr>
   		<tr>
   			<td>&nbsp;</td>
-  			<td><input name="familiar" type="radio" value="1" /></td>
-  			<td><input name="familiar" type="radio" value="2" /></td>
-  			<td><input name="familiar" type="radio" value="3" /></td>
-  			<td><input name="familiar" type="radio" value="4" /></td>
-  			<td><input name="familiar" type="radio" value="5" /></td>
-  			<td><input name="familiar" type="radio" value="6" /></td>
-  			<td><input name="familiar" type="radio" value="7" /></td>
+  			<td><input name="worktogether" type="radio" value="1" /></td>
+  			<td><input name="worktogether" type="radio" value="2" /></td>
+  			<td><input name="worktogether" type="radio" value="3" /></td>
+  			<td><input name="worktogether" type="radio" value="4" /></td>
+  			<td><input name="worktogether" type="radio" value="5" /></td>
+  			<td><input name="worktogether" type="radio" value="6" /></td>
+  			<td><input name="worktogether" type="radio" value="7" /></td>
   			<td>&nbsp;</td>
   		</tr>
   	</tbody>
@@ -248,13 +248,13 @@ Please <b>do not</b> pay attention to the speaker's face -- pay attention only t
   		</tr>
   		<tr>
   			<td>&nbsp;</td>
-  			<td><input name="familiar" type="radio" value="1" /></td>
-  			<td><input name="familiar" type="radio" value="2" /></td>
-  			<td><input name="familiar" type="radio" value="3" /></td>
-  			<td><input name="familiar" type="radio" value="4" /></td>
-  			<td><input name="familiar" type="radio" value="5" /></td>
-  			<td><input name="familiar" type="radio" value="6" /></td>
-  			<td><input name="familiar" type="radio" value="7" /></td>
+  			<td><input name="goal" type="radio" value="1" /></td>
+  			<td><input name="goal" type="radio" value="2" /></td>
+  			<td><input name="goal" type="radio" value="3" /></td>
+  			<td><input name="goal" type="radio" value="4" /></td>
+  			<td><input name="goal" type="radio" value="5" /></td>
+  			<td><input name="goal" type="radio" value="6" /></td>
+  			<td><input name="goal" type="radio" value="7" /></td>
   			<td>&nbsp;</td>
   		</tr>
   	</tbody>
@@ -280,13 +280,13 @@ Please <b>do not</b> pay attention to the speaker's face -- pay attention only t
   		</tr>
   		<tr>
   			<td>&nbsp;</td>
-  			<td><input name="familiar" type="radio" value="1" /></td>
-  			<td><input name="familiar" type="radio" value="2" /></td>
-  			<td><input name="familiar" type="radio" value="3" /></td>
-  			<td><input name="familiar" type="radio" value="4" /></td>
-  			<td><input name="familiar" type="radio" value="5" /></td>
-  			<td><input name="familiar" type="radio" value="6" /></td>
-  			<td><input name="familiar" type="radio" value="7" /></td>
+  			<td><input name="tension" type="radio" value="1" /></td>
+  			<td><input name="tension" type="radio" value="2" /></td>
+  			<td><input name="tension" type="radio" value="3" /></td>
+  			<td><input name="tension" type="radio" value="4" /></td>
+  			<td><input name="tension" type="radio" value="5" /></td>
+  			<td><input name="tension" type="radio" value="6" /></td>
+  			<td><input name="tension" type="radio" value="7" /></td>
   			<td>&nbsp;</td>
   		</tr>
   	</tbody>
@@ -312,13 +312,13 @@ Please <b>do not</b> pay attention to the speaker's face -- pay attention only t
   		</tr>
   		<tr>
   			<td>&nbsp;</td>
-  			<td><input name="familiar" type="radio" value="1" /></td>
-  			<td><input name="familiar" type="radio" value="2" /></td>
-  			<td><input name="familiar" type="radio" value="3" /></td>
-  			<td><input name="familiar" type="radio" value="4" /></td>
-  			<td><input name="familiar" type="radio" value="5" /></td>
-  			<td><input name="familiar" type="radio" value="6" /></td>
-  			<td><input name="familiar" type="radio" value="7" /></td>
+  			<td><input name="getalong" type="radio" value="1" /></td>
+  			<td><input name="getalong" type="radio" value="2" /></td>
+  			<td><input name="getalong" type="radio" value="3" /></td>
+  			<td><input name="getalong" type="radio" value="4" /></td>
+  			<td><input name="getalong" type="radio" value="5" /></td>
+  			<td><input name="getalong" type="radio" value="6" /></td>
+  			<td><input name="getalong" type="radio" value="7" /></td>
   			<td>&nbsp;</td>
   		</tr>
   	</tbody>
@@ -344,13 +344,13 @@ Please <b>do not</b> pay attention to the speaker's face -- pay attention only t
   		</tr>
   		<tr>
   			<td>&nbsp;</td>
-  			<td><input name="familiar" type="radio" value="1" /></td>
-  			<td><input name="familiar" type="radio" value="2" /></td>
-  			<td><input name="familiar" type="radio" value="3" /></td>
-  			<td><input name="familiar" type="radio" value="4" /></td>
-  			<td><input name="familiar" type="radio" value="5" /></td>
-  			<td><input name="familiar" type="radio" value="6" /></td>
-  			<td><input name="familiar" type="radio" value="7" /></td>
+  			<td><input name="unified" type="radio" value="1" /></td>
+  			<td><input name="unified" type="radio" value="2" /></td>
+  			<td><input name="unified" type="radio" value="3" /></td>
+  			<td><input name="unified" type="radio" value="4" /></td>
+  			<td><input name="unified" type="radio" value="5" /></td>
+  			<td><input name="unified" type="radio" value="6" /></td>
+  			<td><input name="unified" type="radio" value="7" /></td>
   			<td>&nbsp;</td>
   		</tr>
   	</tbody>
@@ -376,13 +376,13 @@ Please <b>do not</b> pay attention to the speaker's face -- pay attention only t
   		</tr>
   		<tr>
   			<td>&nbsp;</td>
-  			<td><input name="familiar" type="radio" value="1" /></td>
-  			<td><input name="familiar" type="radio" value="2" /></td>
-  			<td><input name="familiar" type="radio" value="3" /></td>
-  			<td><input name="familiar" type="radio" value="4" /></td>
-  			<td><input name="familiar" type="radio" value="5" /></td>
-  			<td><input name="familiar" type="radio" value="6" /></td>
-  			<td><input name="familiar" type="radio" value="7" /></td>
+  			<td><input name="disagreement" type="radio" value="1" /></td>
+  			<td><input name="disagreement" type="radio" value="2" /></td>
+  			<td><input name="disagreement" type="radio" value="3" /></td>
+  			<td><input name="disagreement" type="radio" value="4" /></td>
+  			<td><input name="disagreement" type="radio" value="5" /></td>
+  			<td><input name="disagreement" type="radio" value="6" /></td>
+  			<td><input name="disagreement" type="radio" value="7" /></td>
   			<td>&nbsp;</td>
   		</tr>
   	</tbody>
@@ -408,13 +408,13 @@ Please <b>do not</b> pay attention to the speaker's face -- pay attention only t
   		</tr>
   		<tr>
   			<td>&nbsp;</td>
-  			<td><input name="familiar" type="radio" value="1" /></td>
-  			<td><input name="familiar" type="radio" value="2" /></td>
-  			<td><input name="familiar" type="radio" value="3" /></td>
-  			<td><input name="familiar" type="radio" value="4" /></td>
-  			<td><input name="familiar" type="radio" value="5" /></td>
-  			<td><input name="familiar" type="radio" value="6" /></td>
-  			<td><input name="familiar" type="radio" value="7" /></td>
+  			<td><input name="buttheads" type="radio" value="1" /></td>
+  			<td><input name="buttheads" type="radio" value="2" /></td>
+  			<td><input name="buttheads" type="radio" value="3" /></td>
+  			<td><input name="buttheads" type="radio" value="4" /></td>
+  			<td><input name="buttheads" type="radio" value="5" /></td>
+  			<td><input name="buttheads" type="radio" value="6" /></td>
+  			<td><input name="buttheads" type="radio" value="7" /></td>
   			<td>&nbsp;</td>
   		</tr>
   	</tbody>
