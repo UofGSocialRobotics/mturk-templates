@@ -89,12 +89,15 @@
 
 }
 </style>
+
 <script type='text/javascript'>
+var talking_about_people = false
+
 window.onload = function() {
   document.getElementById('add').setAttribute('onclick', 'return validateForm()');
-  video_id = getRandomVideo();
-  document.getElementById('vid_id').setAttribute('value', video_id)
-  document.getElementById('video1').setAttribute('src', video_id)
+  video_link = getRandomVideo();
+  document.getElementById('vid_id').setAttribute('value', video_link)
+  document.getElementById('video1').setAttribute('src', video_link)
 }
 
 
@@ -103,11 +106,37 @@ function getRandomVideo() {
   // DEPENDING ON THE EXPERIMENT THE "rtext[i]" RANDOMIZATION COULD BE USED TO DO MULTIPLE THINGS
   var vid_link = new Array ();
   // THE NUMBER OF VALUES HERE DEPENDS ON NUMBER OF CONDITIONS
-  vid_link[0] = "https://s3.us-east-2.amazonaws.com/metaphoric-gestures-1/uf_nosound.mov";
-  vid_link[1] = "https://s3.us-east-2.amazonaws.com/metaphoric-gestures-1/uo_nosound.mov";
-  vid_link[2] = "https://s3.us-east-2.amazonaws.com/metaphoric-gestures-1/ut_nosound.mov";
-  var i = Math.floor(3*Math.random());  // THE MULTIPLIER WILL DEPEND ON THE NUMBER OF CONDITIONS
+  vid_link[0] = "https://s3.us-east-2.amazonaws.com/metaphoric-gestures-x-culture/eastern_gest_1-0.mov";
+  vid_link[1] = "https://s3.us-east-2.amazonaws.com/metaphoric-gestures-x-culture/eastern_gest_1-1.mov";
+  vid_link[2] = "https://s3.us-east-2.amazonaws.com/metaphoric-gestures-x-culture/eastern_gest_1-2.mov";
+  vid_link[3] = "https://s3.us-east-2.amazonaws.com/metaphoric-gestures-x-culture/eastern_gest_2-0.mov";
+  vid_link[4] = "https://s3.us-east-2.amazonaws.com/metaphoric-gestures-x-culture/eastern_gest_2-1.mov";
+  vid_link[5] = "https://s3.us-east-2.amazonaws.com/metaphoric-gestures-x-culture/eastern_gest_2-2.mov";
+  vid_link[6] = "https://s3.us-east-2.amazonaws.com/metaphoric-gestures-x-culture/eastern_gest_3-0.mov";
+  vid_link[7] = "https://s3.us-east-2.amazonaws.com/metaphoric-gestures-x-culture/eastern_gest_3-1.mov";
+  vid_link[8] = "https://s3.us-east-2.amazonaws.com/metaphoric-gestures-x-culture/eastern_gest_3-2.mov";
+  vid_link[9] = "https://s3.us-east-2.amazonaws.com/metaphoric-gestures-x-culture/western_gest_1-0.mov";
+  vid_link[10] = "https://s3.us-east-2.amazonaws.com/metaphoric-gestures-x-culture/western_gest_1-1.mov";
+  vid_link[11] = "https://s3.us-east-2.amazonaws.com/metaphoric-gestures-x-culture/western_gest_1-2.mov";
+  vid_link[12] = "https://s3.us-east-2.amazonaws.com/metaphoric-gestures-x-culture/western_gest_3-0.mov";
+  vid_link[13] = "https://s3.us-east-2.amazonaws.com/metaphoric-gestures-x-culture/western_gest_3-1.mov";
+  vid_link[14] = "https://s3.us-east-2.amazonaws.com/metaphoric-gestures-x-culture/western_gest_3-2.mov";
+  vid_link[15] = "https://s3.us-east-2.amazonaws.com/metaphoric-gestures-x-culture/western_gest_4-0.mov";
+  vid_link[16] = "https://s3.us-east-2.amazonaws.com/metaphoric-gestures-x-culture/western_gest_4-1.mov";
+  vid_link[17] = "https://s3.us-east-2.amazonaws.com/metaphoric-gestures-x-culture/western_gest_4-2.mov";
+  var i = Math.floor(17*Math.random());  // THE MULTIPLIER WILL DEPEND ON THE NUMBER OF CONDITIONS
   video_link = vid_link[i]; // RECORDS THE RANDOMIZATION IN A HIDDEN FORM FIELD
+  // talking about groups or people!
+  // TODO change where this is good god is this spaghetti madness
+  // 0-2 idea
+  // 3-5 people
+  // 6-8 people
+  // 9-11 people
+  // 12-14 people
+  // 15-17 idea
+  if (i >= 3 && i <= 14) {
+    talking_about_people = true
+  }
   return(video_link)
 }
 
@@ -120,16 +149,20 @@ var params = [
   "worktogether",
   "goal",
   "communicate",
-  "cometogether"
+  "cometogether",
+  "overlap",
+  "close",
+  "protected",
+  "control"
 ];
 
 function validateForm() {
   // check free response area has enough words.
-  // var free_response_area = document.getElementsByName('freeResponseArea');
-  // if(free_response_area[0].value.split(' ').length < 10) {
-  //     alert("Please write more than 10 words about what you think she is saying about the group.")
-  //     return false;
-  // }
+  var free_response_area = document.getElementsByName('freeResponseArea');
+  if(free_response_area[0].value.split(' ').length < 10) {
+      alert("Please write more than 10 words about what you think she is saying about the group.")
+      return false;
+  }
   // return true
   // UNCOMMENT for checking quant variables are filled out.
   var checks = [];
@@ -200,7 +233,7 @@ Please <b>do not</b> pay attention to the speaker's face -- pay attention only t
 </div>
 
 <div style="text-align:center">
-<!-- <table>
+<table>
 	<tbody>
 		<tr>
 			<td>
@@ -210,7 +243,7 @@ Please <b>do not</b> pay attention to the speaker's face -- pay attention only t
 			<td><input name="freeResponseArea" style="width:400px; height:200px" type="text" value="" /></td>
 		</tr>
 	</tbody>
-</table> -->
+</table>
 
 
 <div align="center" id="dataContainer">
@@ -507,6 +540,135 @@ Please <b>do not</b> pay attention to the speaker's face -- pay attention only t
       	</tbody>
       </table>
 
+<!-- Overlap -->
+<div height="400" id="ratingArea" width="400">
+  <div align="center" class="label2">
+    On a scale from 1 to 7, how many <b>overlapping traits</b> do you think people in this group have?
+  </div>
+  <table>
+  	<tbody>
+  		<tr>
+  			<td align="center" class="attributeDiv">None at all</td>
+  			<td align="center" class="attributeDiv">1</td>
+  			<td align="center" class="attributeDiv">2</td>
+  			<td align="center" class="attributeDiv">3</td>
+  			<td align="center" class="attributeDiv">4</td>
+  			<td align="center" class="attributeDiv">5</td>
+  			<td align="center" class="attributeDiv">6</td>
+  			<td align="center" class="attributeDiv">7</td>
+  			<td align="center" class="attributeDiv">Very many</td>
+  		</tr>
+  		<tr>
+  			<td>&nbsp;</td>
+  			<td><input name="overlap" type="radio" value="1" /></td>
+  			<td><input name="overlap" type="radio" value="2" /></td>
+  			<td><input name="overlap" type="radio" value="3" /></td>
+  			<td><input name="overlap" type="radio" value="4" /></td>
+  			<td><input name="overlap" type="radio" value="5" /></td>
+  			<td><input name="overlap" type="radio" value="6" /></td>
+  			<td><input name="overlap" type="radio" value="7" /></td>
+  			<td>&nbsp;</td>
+  		</tr>
+  	</tbody>
+  </table>
+
+
+<!-- Control -->
+<div height="400" id="ratingArea" width="400">
+  <div align="center" class="label2">
+    On a scale from 1 to 7, how <b>controlled</b> do you think this group of people is?
+  </div>
+  <table>
+  	<tbody>
+  		<tr>
+  			<td align="center" class="attributeDiv">None at all</td>
+  			<td align="center" class="attributeDiv">1</td>
+  			<td align="center" class="attributeDiv">2</td>
+  			<td align="center" class="attributeDiv">3</td>
+  			<td align="center" class="attributeDiv">4</td>
+  			<td align="center" class="attributeDiv">5</td>
+  			<td align="center" class="attributeDiv">6</td>
+  			<td align="center" class="attributeDiv">7</td>
+  			<td align="center" class="attributeDiv">Very many</td>
+  		</tr>
+  		<tr>
+  			<td>&nbsp;</td>
+  			<td><input name="control" type="radio" value="1" /></td>
+  			<td><input name="control" type="radio" value="2" /></td>
+  			<td><input name="control" type="radio" value="3" /></td>
+  			<td><input name="control" type="radio" value="4" /></td>
+  			<td><input name="control" type="radio" value="5" /></td>
+  			<td><input name="control" type="radio" value="6" /></td>
+  			<td><input name="control" type="radio" value="7" /></td>
+  			<td>&nbsp;</td>
+  		</tr>
+  	</tbody>
+  </table>
+
+
+<!-- Close knit -->
+<div height="400" id="ratingArea" width="400">
+  <div align="center" class="label2">
+    On a scale from 1 to 7, how <b>close knit</b> do you think this group of people is?
+  </div>
+  <table>
+  	<tbody>
+  		<tr>
+  			<td align="center" class="attributeDiv">None at all</td>
+  			<td align="center" class="attributeDiv">1</td>
+  			<td align="center" class="attributeDiv">2</td>
+  			<td align="center" class="attributeDiv">3</td>
+  			<td align="center" class="attributeDiv">4</td>
+  			<td align="center" class="attributeDiv">5</td>
+  			<td align="center" class="attributeDiv">6</td>
+  			<td align="center" class="attributeDiv">7</td>
+  			<td align="center" class="attributeDiv">Very many</td>
+  		</tr>
+  		<tr>
+  			<td>&nbsp;</td>
+  			<td><input name="close" type="radio" value="1" /></td>
+  			<td><input name="close" type="radio" value="2" /></td>
+  			<td><input name="close" type="radio" value="3" /></td>
+  			<td><input name="close" type="radio" value="4" /></td>
+  			<td><input name="close" type="radio" value="5" /></td>
+  			<td><input name="close" type="radio" value="6" /></td>
+  			<td><input name="close" type="radio" value="7" /></td>
+  			<td>&nbsp;</td>
+  		</tr>
+  	</tbody>
+  </table>
+
+<!-- Protected -->
+<div height="400" id="ratingArea" width="400">
+  <div align="center" class="label2">
+    On a scale from 1 to 7, how <b>protected</b> do you think this group of people is?
+  </div>
+  <table>
+  	<tbody>
+  		<tr>
+  			<td align="center" class="attributeDiv">None at all</td>
+  			<td align="center" class="attributeDiv">1</td>
+  			<td align="center" class="attributeDiv">2</td>
+  			<td align="center" class="attributeDiv">3</td>
+  			<td align="center" class="attributeDiv">4</td>
+  			<td align="center" class="attributeDiv">5</td>
+  			<td align="center" class="attributeDiv">6</td>
+  			<td align="center" class="attributeDiv">7</td>
+  			<td align="center" class="attributeDiv">Very many</td>
+  		</tr>
+  		<tr>
+  			<td>&nbsp;</td>
+  			<td><input name="protected" type="radio" value="1" /></td>
+  			<td><input name="protected" type="radio" value="2" /></td>
+  			<td><input name="protected" type="radio" value="3" /></td>
+  			<td><input name="protected" type="radio" value="4" /></td>
+  			<td><input name="protected" type="radio" value="5" /></td>
+  			<td><input name="protected" type="radio" value="6" /></td>
+  			<td><input name="protected" type="radio" value="7" /></td>
+  			<td>&nbsp;</td>
+  		</tr>
+  	</tbody>
+  </table>
 
 <div style="text-align:center">
 <table>
