@@ -39,6 +39,11 @@
 	padding-bottom: 2px;
 }
 
+#submissionButton{
+	padding: 50px;
+	margin-left:45%
+}
+
 .triangle{
 	width:0;
 	height: 0;
@@ -120,7 +125,7 @@ function validateForm() {
     }
   }
   quant_checks = true;
-  
+
   return quant_checks;
 }
 
@@ -145,9 +150,10 @@ else
 
 <div id="instructionBox" style="">
 <p id="instructions">Study Informed Consent: Metaphoric Gestures in Human Thought</p>
-<p> You are about to participate in a study on interpretation of gestures hosted by University of Glasgow. Please read
-and check the boxes below. If you do not consent to any of the below statements, please withdraw from this HIT. If you
-do not check any of the boxes below, we will not use your data in this study. </p>
+<p> You are about to participate in a study on interpretation of gestures hosted by University of Glasgow Department of
+  Neuroscience and Psychology. Please read
+and check the boxes below. If you do not consent to any of the below statements, please withdraw from this HIT. <b>If you participate in
+the study but do not check any of the boxes below, we will not use your data in this study and you will not be paid for this HIT.</b></p>
 
 <div>&nbsp;</div>
 </div>
@@ -223,9 +229,16 @@ do not check any of the boxes below, we will not use your data in this study. </
 	</tbody>
 </table>
 
+<div id="instructionBox" style="">
+<p id="instructions">Further Questions</p>
+<p> If you have any further questions about this research including questions about your participation and the data
+  we have gathered, please contact <br> Carolyn Saund <br> 2402321S at student dot gla dot ac dot uk. </p>
 
-<div style="text-align:center">
-<table>
+<div>&nbsp;</div>
+</div>
+
+<div align="center" style="text-align:center">
+<table name="submissionButton">
 	<tbody>
 		<tr>
 			<td><input id="add" name="add" type="submit" value="Submit" /></td>
