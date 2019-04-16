@@ -1,0 +1,708 @@
+<style type="text/css">#pageContainer {
+  width: 1200px;
+  height: 800px;
+  margin-left: 60px;
+  margin-top: 10px;
+}
+
+
+#dataContainer {
+  display: flex;
+  justify-content: center;
+}
+
+#movieArea1 {
+  width: 400px;
+  height: 400px;
+  padding-left: 10px;
+  padding-right: 10px;
+  background: black;
+	border-style: solid;
+	border-width: 10px;
+	border-color: #AAAAAA;
+	margin:0px;
+	float:left;
+}
+
+#ratingArea{
+    width: 405px;
+    padding-left: 10px;
+    padding-right: 10px;
+}
+
+
+.sliderBar{
+	clear: both;
+	width: 200px;
+	padding-top: 3px;
+	padding-bottom: 2px;
+}
+
+.triangle{
+	width:0;
+	height: 0;
+	border-right: 200px solid transparent;
+	border-bottom: 13px solid #FFA6A6;
+	opacity: 0.7;
+}
+
+.invertedTriangle{
+	width:0;
+	height: 0;
+	border-left: 200px solid transparent;
+	border-top: 13px solid #99D6AD;
+	opacity: 0.7;
+}
+
+.attributeDiv{
+	font-size:16px;
+	height:10px;
+	color: black;
+}
+
+.sliderDiv{
+	font-size:4;
+	height:40px;
+}
+
+#instructionBox{
+	clear: both;
+	font-size: 17px;
+	color: red;
+}
+
+#labelDescriptions{
+	clear: both;
+	font-size: 16px;
+	color: #000000;
+}
+.label{
+	clear: both;
+	font-size: 16px;
+	color: #993300;
+	padding-left: 130px;
+}
+.label2{
+	color: #993300;
+}
+
+}
+</style>
+
+<script type='text/javascript'>
+var talking_about_people = false
+
+window.onload = function() {
+  document.getElementById('add').setAttribute('onclick', 'return validateForm()');
+  video_link = getRandomVideo();
+  document.getElementById('vid_id').setAttribute('value', video_link)
+  document.getElementById('video1').setAttribute('src', video_link)
+}
+
+
+function getRandomVideo() {
+  // THE BELOW RANDOMIZES INTO A TREATMENT CONDITION
+  // DEPENDING ON THE EXPERIMENT THE "rtext[i]" RANDOMIZATION COULD BE USED TO DO MULTIPLE THINGS
+  var vid_link = new Array ();
+  // THE NUMBER OF VALUES HERE DEPENDS ON NUMBER OF CONDITIONS
+  vid_link[0] = "https://s3.us-east-2.amazonaws.com/metaphoric-gestures-x-culture/eastern_gest_1-0.mov";
+  vid_link[1] = "https://s3.us-east-2.amazonaws.com/metaphoric-gestures-x-culture/eastern_gest_1-1.mov";
+  vid_link[2] = "https://s3.us-east-2.amazonaws.com/metaphoric-gestures-x-culture/eastern_gest_1-2.mov";
+  vid_link[3] = "https://s3.us-east-2.amazonaws.com/metaphoric-gestures-x-culture/eastern_gest_2-0.mov";
+  vid_link[4] = "https://s3.us-east-2.amazonaws.com/metaphoric-gestures-x-culture/eastern_gest_2-1.mov";
+  vid_link[5] = "https://s3.us-east-2.amazonaws.com/metaphoric-gestures-x-culture/eastern_gest_2-2.mov";
+  vid_link[6] = "https://s3.us-east-2.amazonaws.com/metaphoric-gestures-x-culture/eastern_gest_3-0.mov";
+  vid_link[7] = "https://s3.us-east-2.amazonaws.com/metaphoric-gestures-x-culture/eastern_gest_3-1.mov";
+  vid_link[8] = "https://s3.us-east-2.amazonaws.com/metaphoric-gestures-x-culture/eastern_gest_3-2.mov";
+  vid_link[9] = "https://s3.us-east-2.amazonaws.com/metaphoric-gestures-x-culture/western_gest_1-0.mov";
+  vid_link[10] = "https://s3.us-east-2.amazonaws.com/metaphoric-gestures-x-culture/western_gest_1-1.mov";
+  vid_link[11] = "https://s3.us-east-2.amazonaws.com/metaphoric-gestures-x-culture/western_gest_1-2.mov";
+  vid_link[12] = "https://s3.us-east-2.amazonaws.com/metaphoric-gestures-x-culture/western_gest_3-0.mov";
+  vid_link[13] = "https://s3.us-east-2.amazonaws.com/metaphoric-gestures-x-culture/western_gest_3-1.mov";
+  vid_link[14] = "https://s3.us-east-2.amazonaws.com/metaphoric-gestures-x-culture/western_gest_3-2.mov";
+  vid_link[15] = "https://s3.us-east-2.amazonaws.com/metaphoric-gestures-x-culture/western_gest_4-0.mov";
+  vid_link[16] = "https://s3.us-east-2.amazonaws.com/metaphoric-gestures-x-culture/western_gest_4-1.mov";
+  vid_link[17] = "https://s3.us-east-2.amazonaws.com/metaphoric-gestures-x-culture/western_gest_4-2.mov";
+  var i = Math.floor(17*Math.random());  // THE MULTIPLIER WILL DEPEND ON THE NUMBER OF CONDITIONS
+  video_link = vid_link[i]; // RECORDS THE RANDOMIZATION IN A HIDDEN FORM FIELD
+  // talking about groups or people!
+  // TODO change where this is good god is this spaghetti madness
+  // 0-2 idea
+  // 3-5 people
+  // 6-8 people
+  // 9-11 people
+  // 12-14 people
+  // 15-17 idea
+  if (i >= 3 && i <= 14) {
+    talking_about_people = true
+  }
+  return(video_link)
+}
+
+var params = [
+  "tension",
+  "getalong",
+  "buttheads",
+  "unified",
+  "disagreement",
+  "worktogether",
+  "goal",
+  "communicate",
+  "cometogether",
+  "overlap",
+  "close",
+  "protected",
+  "control"
+];
+
+function validateForm() {
+  // check free response area has enough words.
+  var free_response_area = document.getElementsByName('freeResponseArea');
+  if(free_response_area[0].value.split(' ').length < 10) {
+      alert("Please write more than 10 words about what you think she is saying about the group.")
+      return false;
+  }
+  // return true
+  // UNCOMMENT for checking quant variables are filled out.
+  var checks = [];
+  // iterate through params
+  var quant_checks = false;
+  for (var i = 0; i < params.length; i++) {
+    var element = document.getElementsByName(params[i]);
+    // iterate through param choices
+    for (var j = 0; j < element.length; j++) {
+      if (element[j].checked) {
+        checks[i] = true;
+      }
+      console.log(checks[i])
+    }
+    if (!checks[i]) {
+      alert("Please choose a value for " + params[i]);
+      return false;
+    }
+  }
+  quant_checks = true;
+
+  return quant_checks;
+}
+
+function hideShowInstructions(){
+var instructBox = document.getElementById('instructionBox');
+if(instructBox.style.display == 'none')
+{
+	instructBox.style.display = 'block';
+	instructBox.hidden = false;
+}
+else
+{
+	instructBox.style.display = 'none';
+	instructBox.hidden = true;
+}
+}
+</script>
+<div id="pageContainer">
+<table>
+	<tbody>
+		<tr>
+			<td>
+			<h2>ジェスチャー解釈</h2>
+			</td>
+			<td><input id="hideShow" name="hideShow" onclick="hideShowInstructions();" type="button" value="説明を表示" /></td>
+		</tr>
+	</tbody>
+</table>
+
+<div id="instructionBox" style="">
+<p id="instructions"><b>重要：もし過去に似たような研究に参加されたことがある方はご
+参加をご遠慮ください。研究の有効性のために、これからお見せするビデオが様々
+な方々により解釈いただけることが大変重要です。もし、同じ方がご参加になった
+場合には、HIT
+を拒否しなくてはならない場合もありますのでご了承ください。</b></p>
+
+<p class="label2">これからお見せするビデオの背景説明を読んでください。ビデオをご覧になってい
+ただき質問に答えてください。ビデオは何度見ても構いません。　でも、ビデオの
+俳優の顔ではなく、ジェスチャーにのみ注意を払ってください。 </p>
+
+<div>&nbsp;</div>
+</div>
+
+
+<div id="movieArea1">
+<video controls="" height=400px id="video1" tabindex="0" width="400">
+  <!-- <source src="https://s3.us-east-2.amazonaws.com/metaphoric-gestures-1/ut_nosound.mov" /> -->
+</video>
+&nbsp;
+&nbsp;
+</div>
+
+<div style="text-align:center">
+<table>
+	<tbody>
+		<tr>
+			<td>
+			<div align="center" style="padding:15px" class="label2">ビデオの俳優は人々の集まり、グループについて話しています。あなたの見るとこ
+ろでは、何について話していると思いますか？　思いつくことを２−３文　（１０
+語以上）書いてください。</div>
+			</td>
+			<br>
+			<td><input name="freeResponseArea" style="width:400px; height:200px" type="text" value="" /></td>
+		</tr>
+	</tbody>
+</table>
+
+
+<div align="center" id="dataContainer">
+<b>ビデオの俳優は人々の集まり、グループについて話しています。あなたのジェスチ
+ャーの解釈に基づき下記の文について当てはまる選択肢を選んでください。</b>
+
+
+<!-- TODO RANDOMIZE THIS ORDER!!!!!!! -->
+<div>
+<!-- Work Together -->
+<div id="ratingArea" width="400">
+  <div align="center" class="label2">
+    このジェスチャーから見て、集まっている人たちはどれほどの程度で　一緒に何か
+していると思いますか？?
+  </div>
+  <table>
+  	<tbody>
+  		<tr>
+  			<td align="center" class="attributeDiv">全く一緒にしていない</td>
+  			<td align="center" class="attributeDiv">1</td>
+  			<td align="center" class="attributeDiv">2</td>
+  			<td align="center" class="attributeDiv">3</td>
+  			<td align="center" class="attributeDiv">4</td>
+  			<td align="center" class="attributeDiv">5</td>
+  			<td align="center" class="attributeDiv">6</td>
+  			<td align="center" class="attributeDiv">7</td>
+  			<td align="center" class="attributeDiv">大変よく一緒にしている。</td>
+  		</tr>
+  		<tr>
+  			<td>&nbsp;</td>
+  			<td><input name="worktogether" type="radio" value="1" /></td>
+  			<td><input name="worktogether" type="radio" value="2" /></td>
+  			<td><input name="worktogether" type="radio" value="3" /></td>
+  			<td><input name="worktogether" type="radio" value="4" /></td>
+  			<td><input name="worktogether" type="radio" value="5" /></td>
+  			<td><input name="worktogether" type="radio" value="6" /></td>
+  			<td><input name="worktogether" type="radio" value="7" /></td>
+  			<td>&nbsp;</td>
+  		</tr>
+  	</tbody>
+  </table>
+</div>
+
+<!-- Common Goal -->
+<div id="ratingArea" width="400">
+  <div align="center" class="label2">
+    このグループの人たちには、共通の目標やゴールがあると思いますか？
+  </div>
+  <table>
+  	<tbody>
+  		<tr>
+  			<td align="center" class="attributeDiv">全くそうでない</td>
+  			<td align="center" class="attributeDiv">1</td>
+  			<td align="center" class="attributeDiv">2</td>
+  			<td align="center" class="attributeDiv">3</td>
+  			<td align="center" class="attributeDiv">4</td>
+  			<td align="center" class="attributeDiv">5</td>
+  			<td align="center" class="attributeDiv">6</td>
+  			<td align="center" class="attributeDiv">7</td>
+  			<td align="center" class="attributeDiv">共通のゴールがあることがよくわかる</td>
+  		</tr>
+  		<tr>
+  			<td>&nbsp;</td>
+  			<td><input name="goal" type="radio" value="1" /></td>
+  			<td><input name="goal" type="radio" value="2" /></td>
+  			<td><input name="goal" type="radio" value="3" /></td>
+  			<td><input name="goal" type="radio" value="4" /></td>
+  			<td><input name="goal" type="radio" value="5" /></td>
+  			<td><input name="goal" type="radio" value="6" /></td>
+  			<td><input name="goal" type="radio" value="7" /></td>
+  			<td>&nbsp;</td>
+  		</tr>
+  	</tbody>
+  </table>
+</div>
+
+<!-- Tension -->
+<div id="ratingArea" width="400">
+  <div align="center" class="label2">
+    集まっている人たちの間には衝突する点があると思いますか？
+  </div>
+  <table>
+  	<tbody>
+  		<tr>
+  			<td align="center" class="attributeDiv">全くない</td>
+  			<td align="center" class="attributeDiv">1</td>
+  			<td align="center" class="attributeDiv">2</td>
+  			<td align="center" class="attributeDiv">3</td>
+  			<td align="center" class="attributeDiv">4</td>
+  			<td align="center" class="attributeDiv">5</td>
+  			<td align="center" class="attributeDiv">6</td>
+  			<td align="center" class="attributeDiv">7</td>
+  			<td align="center" class="attributeDiv">大変衝突している</td>
+  		</tr>
+  		<tr>
+  			<td>&nbsp;</td>
+  			<td><input name="tension" type="radio" value="1" /></td>
+  			<td><input name="tension" type="radio" value="2" /></td>
+  			<td><input name="tension" type="radio" value="3" /></td>
+  			<td><input name="tension" type="radio" value="4" /></td>
+  			<td><input name="tension" type="radio" value="5" /></td>
+  			<td><input name="tension" type="radio" value="6" /></td>
+  			<td><input name="tension" type="radio" value="7" /></td>
+  			<td>&nbsp;</td>
+  		</tr>
+  	</tbody>
+  </table>
+</div>
+
+<!-- Get Along -->
+<div id="ratingArea" width="400">
+  <div align="center" class="label2">
+    集まっている人たちはよく気があっていると思いますか？
+  </div>
+  <table>
+  	<tbody>
+  		<tr>
+  			<td align="center" class="attributeDiv">全くあっていない</td>
+  			<td align="center" class="attributeDiv">1</td>
+  			<td align="center" class="attributeDiv">2</td>
+  			<td align="center" class="attributeDiv">3</td>
+  			<td align="center" class="attributeDiv">4</td>
+  			<td align="center" class="attributeDiv">5</td>
+  			<td align="center" class="attributeDiv">6</td>
+  			<td align="center" class="attributeDiv">7</td>
+  			<td align="center" class="attributeDiv">大変よく合っている</td>
+  		</tr>
+  		<tr>
+  			<td>&nbsp;</td>
+  			<td><input name="getalong" type="radio" value="1" /></td>
+  			<td><input name="getalong" type="radio" value="2" /></td>
+  			<td><input name="getalong" type="radio" value="3" /></td>
+  			<td><input name="getalong" type="radio" value="4" /></td>
+  			<td><input name="getalong" type="radio" value="5" /></td>
+  			<td><input name="getalong" type="radio" value="6" /></td>
+  			<td><input name="getalong" type="radio" value="7" /></td>
+  			<td>&nbsp;</td>
+  		</tr>
+  	</tbody>
+  </table>
+</div>
+
+<!-- Unified -->
+<div id="ratingArea" width="400">
+  <div align="center" class="label2">
+    集まっている人たちはどれほど団結していると思いますか？
+  </div>
+  <table>
+  	<tbody>
+  		<tr>
+  			<td align="center" class="attributeDiv">全くしていない</td>
+  			<td align="center" class="attributeDiv">1</td>
+  			<td align="center" class="attributeDiv">2</td>
+  			<td align="center" class="attributeDiv">3</td>
+  			<td align="center" class="attributeDiv">4</td>
+  			<td align="center" class="attributeDiv">5</td>
+  			<td align="center" class="attributeDiv">6</td>
+  			<td align="center" class="attributeDiv">7</td>
+  			<td align="center" class="attributeDiv">大変よくしている</td>
+  		</tr>
+  		<tr>
+  			<td>&nbsp;</td>
+  			<td><input name="unified" type="radio" value="1" /></td>
+  			<td><input name="unified" type="radio" value="2" /></td>
+  			<td><input name="unified" type="radio" value="3" /></td>
+  			<td><input name="unified" type="radio" value="4" /></td>
+  			<td><input name="unified" type="radio" value="5" /></td>
+  			<td><input name="unified" type="radio" value="6" /></td>
+  			<td><input name="unified" type="radio" value="7" /></td>
+  			<td>&nbsp;</td>
+  		</tr>
+  	</tbody>
+  </table>
+</div>
+
+<!-- Disagree -->
+<div id="ratingArea" width="400">
+  <div align="center" class="label2">
+    集まっている人たちの間にどれほどの不合意があると思いますか？
+  </div>
+  <table>
+  	<tbody>
+  		<tr>
+  			<td align="center" class="attributeDiv">全くない</td>
+  			<td align="center" class="attributeDiv">1</td>
+  			<td align="center" class="attributeDiv">2</td>
+  			<td align="center" class="attributeDiv">3</td>
+  			<td align="center" class="attributeDiv">4</td>
+  			<td align="center" class="attributeDiv">5</td>
+  			<td align="center" class="attributeDiv">6</td>
+  			<td align="center" class="attributeDiv">7</td>
+  			<td align="center" class="attributeDiv">大変不合意がある</td>
+  		</tr>
+  		<tr>
+  			<td>&nbsp;</td>
+  			<td><input name="disagreement" type="radio" value="1" /></td>
+  			<td><input name="disagreement" type="radio" value="2" /></td>
+  			<td><input name="disagreement" type="radio" value="3" /></td>
+  			<td><input name="disagreement" type="radio" value="4" /></td>
+  			<td><input name="disagreement" type="radio" value="5" /></td>
+  			<td><input name="disagreement" type="radio" value="6" /></td>
+  			<td><input name="disagreement" type="radio" value="7" /></td>
+  			<td>&nbsp;</td>
+  		</tr>
+  	</tbody>
+  </table>
+</div>
+
+<!-- Butt Heads -->
+<div id="ratingArea" width="400">
+  <div align="center" class="label2">
+    集まっている人たちの間ではどれほどのぶつかり合いがあると思いますか？
+  </div>
+  <table>
+  	<tbody>
+  		<tr>
+  			<td align="center" class="attributeDiv">全くない</td>
+  			<td align="center" class="attributeDiv">1</td>
+  			<td align="center" class="attributeDiv">2</td>
+  			<td align="center" class="attributeDiv">3</td>
+  			<td align="center" class="attributeDiv">4</td>
+  			<td align="center" class="attributeDiv">5</td>
+  			<td align="center" class="attributeDiv">6</td>
+  			<td align="center" class="attributeDiv">7</td>
+  			<td align="center" class="attributeDiv">大変ぶつかっている</td>
+  		</tr>
+  		<tr>
+  			<td>&nbsp;</td>
+  			<td><input name="buttheads" type="radio" value="1" /></td>
+  			<td><input name="buttheads" type="radio" value="2" /></td>
+  			<td><input name="buttheads" type="radio" value="3" /></td>
+  			<td><input name="buttheads" type="radio" value="4" /></td>
+  			<td><input name="buttheads" type="radio" value="5" /></td>
+  			<td><input name="buttheads" type="radio" value="6" /></td>
+  			<td><input name="buttheads" type="radio" value="7" /></td>
+  			<td>&nbsp;</td>
+  		</tr>
+  	</tbody>
+  </table>
+</div>
+
+<!-- Communicate -->
+<div id="ratingArea" width="400">
+  <div align="center" class="label2">
+    集まっている人たちの間に、どれほどのコミュニケーションがあると思いますか？
+  </div>
+  <table>
+  	<tbody>
+  		<tr>
+  			<td align="center" class="attributeDiv">全くない</td>
+  			<td align="center" class="attributeDiv">1</td>
+  			<td align="center" class="attributeDiv">2</td>
+  			<td align="center" class="attributeDiv">3</td>
+  			<td align="center" class="attributeDiv">4</td>
+  			<td align="center" class="attributeDiv">5</td>
+  			<td align="center" class="attributeDiv">6</td>
+  			<td align="center" class="attributeDiv">7</td>
+  			<td align="center" class="attributeDiv">大変よくある</td>
+  		</tr>
+  		<tr>
+  			<td>&nbsp;</td>
+  			<td><input name="communicate" type="radio" value="1" /></td>
+  			<td><input name="communicate" type="radio" value="2" /></td>
+  			<td><input name="communicate" type="radio" value="3" /></td>
+  			<td><input name="communicate" type="radio" value="4" /></td>
+  			<td><input name="communicate" type="radio" value="5" /></td>
+  			<td><input name="communicate" type="radio" value="6" /></td>
+  			<td><input name="communicate" type="radio" value="7" /></td>
+  			<td>&nbsp;</td>
+  		</tr>
+  	</tbody>
+  </table>
+</div>
+
+  <!-- Come Together -->
+  <div id="ratingArea" width="400">
+      <div align="center" class="label2">
+        集まっている人たちはどれほど一緒に集まっているようですか？
+      </div>
+      <table>
+      	<tbody>
+      		<tr>
+      			<td align="center" class="attributeDiv">全くそうでない</td>
+      			<td align="center" class="attributeDiv">1</td>
+      			<td align="center" class="attributeDiv">2</td>
+      			<td align="center" class="attributeDiv">3</td>
+      			<td align="center" class="attributeDiv">4</td>
+      			<td align="center" class="attributeDiv">5</td>
+      			<td align="center" class="attributeDiv">6</td>
+      			<td align="center" class="attributeDiv">7</td>
+      			<td align="center" class="attributeDiv">大変よく集まっている</td>
+      		</tr>
+      		<tr>
+      			<td>&nbsp;</td>
+      			<td><input name="cometogether" type="radio" value="1" /></td>
+      			<td><input name="cometogether" type="radio" value="2" /></td>
+      			<td><input name="cometogether" type="radio" value="3" /></td>
+      			<td><input name="cometogether" type="radio" value="4" /></td>
+      			<td><input name="cometogether" type="radio" value="5" /></td>
+      			<td><input name="cometogether" type="radio" value="6" /></td>
+      			<td><input name="cometogether" type="radio" value="7" /></td>
+      			<td>&nbsp;</td>
+      		</tr>
+      	</tbody>
+      </table>
+    </div>
+
+<!-- Overlap -->
+<div id="ratingArea" width="400">
+  <div align="center" class="label2">
+    このグループにはどれほどの似通った性格が見られると思いますか？
+  </div>
+  <table>
+  	<tbody>
+  		<tr>
+  			<td align="center" class="attributeDiv">全くない</td>
+  			<td align="center" class="attributeDiv">1</td>
+  			<td align="center" class="attributeDiv">2</td>
+  			<td align="center" class="attributeDiv">3</td>
+  			<td align="center" class="attributeDiv">4</td>
+  			<td align="center" class="attributeDiv">5</td>
+  			<td align="center" class="attributeDiv">6</td>
+  			<td align="center" class="attributeDiv">7</td>
+  			<td align="center" class="attributeDiv">大変よくある</td>
+  		</tr>
+  		<tr>
+  			<td>&nbsp;</td>
+  			<td><input name="overlap" type="radio" value="1" /></td>
+  			<td><input name="overlap" type="radio" value="2" /></td>
+  			<td><input name="overlap" type="radio" value="3" /></td>
+  			<td><input name="overlap" type="radio" value="4" /></td>
+  			<td><input name="overlap" type="radio" value="5" /></td>
+  			<td><input name="overlap" type="radio" value="6" /></td>
+  			<td><input name="overlap" type="radio" value="7" /></td>
+  			<td>&nbsp;</td>
+  		</tr>
+  	</tbody>
+  </table>
+</div>
+
+<!-- Control -->
+<div id="ratingArea" width="400">
+  <div align="center" class="label2">
+    このグループにはどれほどの制御、コントロールがグループとしてあると思います
+か？
+  </div>
+  <table>
+  	<tbody>
+  		<tr>
+  			<td align="center" class="attributeDiv">全くない</td>
+  			<td align="center" class="attributeDiv">1</td>
+  			<td align="center" class="attributeDiv">2</td>
+  			<td align="center" class="attributeDiv">3</td>
+  			<td align="center" class="attributeDiv">4</td>
+  			<td align="center" class="attributeDiv">5</td>
+  			<td align="center" class="attributeDiv">6</td>
+  			<td align="center" class="attributeDiv">7</td>
+  			<td align="center" class="attributeDiv">大変よくある</td>
+  		</tr>
+  		<tr>
+  			<td>&nbsp;</td>
+  			<td><input name="control" type="radio" value="1" /></td>
+  			<td><input name="control" type="radio" value="2" /></td>
+  			<td><input name="control" type="radio" value="3" /></td>
+  			<td><input name="control" type="radio" value="4" /></td>
+  			<td><input name="control" type="radio" value="5" /></td>
+  			<td><input name="control" type="radio" value="6" /></td>
+  			<td><input name="control" type="radio" value="7" /></td>
+  			<td>&nbsp;</td>
+  		</tr>
+  	</tbody>
+  </table>
+
+
+<!-- Close knit -->
+<div id="ratingArea" width="400">
+  <div align="center" class="label2">
+    On a scale from 1 to 7, how <b>close knit</b> do you think this group of people is?
+  </div>
+  <table>
+  	<tbody>
+  		<tr>
+  			<td align="center" class="attributeDiv">None at all</td>
+  			<td align="center" class="attributeDiv">1</td>
+  			<td align="center" class="attributeDiv">2</td>
+  			<td align="center" class="attributeDiv">3</td>
+  			<td align="center" class="attributeDiv">4</td>
+  			<td align="center" class="attributeDiv">5</td>
+  			<td align="center" class="attributeDiv">6</td>
+  			<td align="center" class="attributeDiv">7</td>
+  			<td align="center" class="attributeDiv">Very many</td>
+  		</tr>
+  		<tr>
+  			<td>&nbsp;</td>
+  			<td><input name="close" type="radio" value="1" /></td>
+  			<td><input name="close" type="radio" value="2" /></td>
+  			<td><input name="close" type="radio" value="3" /></td>
+  			<td><input name="close" type="radio" value="4" /></td>
+  			<td><input name="close" type="radio" value="5" /></td>
+  			<td><input name="close" type="radio" value="6" /></td>
+  			<td><input name="close" type="radio" value="7" /></td>
+  			<td>&nbsp;</td>
+  		</tr>
+  	</tbody>
+  </table>
+
+<!-- Protected -->
+<div id="ratingArea" width="400">
+  <div align="center" class="label2">
+    このグループは、どれほど守られている、安全と思いますか？
+  </div>
+  <table>
+  	<tbody>
+  		<tr>
+  			<td align="center" class="attributeDiv">全くない</td>
+  			<td align="center" class="attributeDiv">1</td>
+  			<td align="center" class="attributeDiv">2</td>
+  			<td align="center" class="attributeDiv">3</td>
+  			<td align="center" class="attributeDiv">4</td>
+  			<td align="center" class="attributeDiv">5</td>
+  			<td align="center" class="attributeDiv">6</td>
+  			<td align="center" class="attributeDiv">7</td>
+  			<td align="center" class="attributeDiv">大変よくある</td>
+  		</tr>
+  		<tr>
+  			<td>&nbsp;</td>
+  			<td><input name="protected" type="radio" value="1" /></td>
+  			<td><input name="protected" type="radio" value="2" /></td>
+  			<td><input name="protected" type="radio" value="3" /></td>
+  			<td><input name="protected" type="radio" value="4" /></td>
+  			<td><input name="protected" type="radio" value="5" /></td>
+  			<td><input name="protected" type="radio" value="6" /></td>
+  			<td><input name="protected" type="radio" value="7" /></td>
+  			<td>&nbsp;</td>
+  		</tr>
+  	</tbody>
+  </table>
+</div>
+
+<div style="text-align:center">
+<table>
+	<tbody>
+		<tr>
+			<td>
+			<div align="center" style="padding:15px" class="label2">その他参加に際し、お気づきになった点やコメントなどあればお願いします　（ビ
+デオの不備など）。</div>
+			</td>
+			<td><input name="commentsArea" style="width:200px" type="text" value="" /></td>
+			<td><input id="add" name="add" type="submit" value="確認 " /></td>
+		</tr>
+	</tbody>
+</table>
+<input id="vid_id" name="vid_id" type="hidden" /></div>
+</div>
+
+</div>
+</div>
