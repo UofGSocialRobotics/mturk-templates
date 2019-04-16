@@ -4,13 +4,10 @@
   margin-left: 60px;
   margin-top: 10px;
 }
-
-
 #dataContainer {
   display: flex;
   justify-content: center;
 }
-
 #movieArea1 {
   width: 400px;
   height: 400px;
@@ -23,21 +20,17 @@
 	margin:0px;
 	float:left;
 }
-
 #ratingArea{
     width: 405px;
     padding-left: 10px;
     padding-right: 10px;
 }
-
-
 .sliderBar{
 	clear: both;
 	width: 200px;
 	padding-top: 3px;
 	padding-bottom: 2px;
 }
-
 .triangle{
 	width:0;
 	height: 0;
@@ -45,7 +38,6 @@
 	border-bottom: 13px solid #FFA6A6;
 	opacity: 0.7;
 }
-
 .invertedTriangle{
 	width:0;
 	height: 0;
@@ -53,24 +45,20 @@
 	border-top: 13px solid #99D6AD;
 	opacity: 0.7;
 }
-
 .attributeDiv{
 	font-size:16px;
 	height:10px;
 	color: black;
 }
-
 .sliderDiv{
 	font-size:4;
 	height:40px;
 }
-
 #instructionBox{
 	clear: both;
 	font-size: 17px;
 	color: red;
 }
-
 #labelDescriptions{
 	clear: both;
 	font-size: 16px;
@@ -85,21 +73,17 @@
 .label2{
 	color: #993300;
 }
-
 }
 </style>
 
 <script type='text/javascript'>
 var talking_about_people = false
-
 window.onload = function() {
   document.getElementById('add').setAttribute('onclick', 'return validateForm()');
   video_link = getRandomVideo();
   document.getElementById('vid_id').setAttribute('value', video_link)
   document.getElementById('video1').setAttribute('src', video_link)
 }
-
-
 function getRandomVideo() {
   // THE BELOW RANDOMIZES INTO A TREATMENT CONDITION
   // DEPENDING ON THE EXPERIMENT THE "rtext[i]" RANDOMIZATION COULD BE USED TO DO MULTIPLE THINGS
@@ -138,7 +122,6 @@ function getRandomVideo() {
   }
   return(video_link)
 }
-
 var params = [
   "tension",
   "getalong",
@@ -154,7 +137,6 @@ var params = [
   "protected",
   "control"
 ];
-
 function validateForm() {
   // check free response area has enough words.
   var free_response_area = document.getElementsByName('freeResponseArea');
@@ -182,10 +164,8 @@ function validateForm() {
     }
   }
   quant_checks = true;
-
   return quant_checks;
 }
-
 function hideShowInstructions(){
 var instructBox = document.getElementById('instructionBox');
 if(instructBox.style.display == 'none')
@@ -224,7 +204,7 @@ Please <b>do not</b> pay attention to the speaker's face -- pay attention only t
 
 
 <div id="movieArea1">
-<video controls="" height=400px id="video1" tabindex="0" width="400">
+<video controls="" height="400" id="video1" tabindex="0" width="400">
   <!-- <source src="https://s3.us-east-2.amazonaws.com/metaphoric-gestures-1/ut_nosound.mov" /> -->
 </video>
 &nbsp;
@@ -282,7 +262,7 @@ Please <b>do not</b> pay attention to the speaker's face -- pay attention only t
   		</tr>
   	</tbody>
   </table>
-</div>
+  </div>
 
 <!-- Common Goal -->
 <div id="ratingArea" width="400">
@@ -315,7 +295,7 @@ Please <b>do not</b> pay attention to the speaker's face -- pay attention only t
   		</tr>
   	</tbody>
   </table>
-</div>
+  </div>
 
 <!-- Tension -->
 <div id="ratingArea" width="400">
@@ -515,6 +495,7 @@ Please <b>do not</b> pay attention to the speaker's face -- pay attention only t
   </table>
 </div>
 
+
   <!-- Come Together -->
   <div id="ratingArea" width="400">
       <div align="center" class="label2">
@@ -581,6 +562,7 @@ Please <b>do not</b> pay attention to the speaker's face -- pay attention only t
   </table>
 </div>
 
+
 <!-- Control -->
 <div id="ratingArea" width="400">
   <div align="center" class="label2">
@@ -612,6 +594,7 @@ Please <b>do not</b> pay attention to the speaker's face -- pay attention only t
   		</tr>
   	</tbody>
   </table>
+</div>
 
 
 <!-- Close knit -->
@@ -645,6 +628,7 @@ Please <b>do not</b> pay attention to the speaker's face -- pay attention only t
   		</tr>
   	</tbody>
   </table>
+</div>
 
 <!-- Protected -->
 <div id="ratingArea" width="400">
@@ -692,6 +676,7 @@ Please <b>do not</b> pay attention to the speaker's face -- pay attention only t
 	</tbody>
 </table>
 <input id="vid_id" name="vid_id" type="hidden" /></div>
+</div>
 </div>
 
 </div>
