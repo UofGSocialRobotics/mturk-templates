@@ -1,57 +1,65 @@
 # check the large survey-library for ready-to-run examples you can
 # cut and paste here
 
-l: chooserandom
-t: set
-- random from 1 2 3
 
 l: testvar
 t: set
 - random from 334669043 334669066 334668989
 
-l:
-t: jump
-- if $chooserandom == 1 then goto vid_3_1
-- if $chooserandom == 2 then goto vid_3_2
-- if $chooserandom == 3 then goto vid_3_0
 
+ l:
+ t: jump
+ - if $chooserandom == 1 then goto main_survey
+ - if $chooserandom == 2 then goto main_survey
+ - if $chooserandom == 3 then goto main_survey
 
+# l: chooserandom
+# t: set
+# - random from 1 2 3
+
+# l:
+# t: jump
+# - if $chooserandom == 1 then goto vid_3_1
+# - if $chooserandom == 2 then goto vid_3_2
+# - if $chooserandom == 3 then goto vid_3_0
+#
+#
 ## video 1 ########################
-
-l: vid_3_1
-t: info
-q: Please open this video in a new tab, so you can reference it for the following section. {$testvar}<br>
-<iframe src="https://player.vimeo.com/video/334669043" width="640" height="360" frameborder="0" allow="autoplay; fullscreen" allowfullscreen></iframe>
-
-
-l:
-t: jump
-- goto main_survey
-
-## video 2 ########################
-
-l: vid_3_2
-t: info
-q: Please open this video in a new tab, so you can reference it for the following section. {$testvar}<br>
-<iframe src="https://player.vimeo.com/video/334669066" width="640" height="360" frameborder="0" allow="autoplay; fullscreen" allowfullscreen></iframe>
-
-
-l:
-t: jump
-- goto main_survey
-
-
-## video 3 ########################
-
-l: vid_3_0
-t: info
-q: Please open this video in a new tab, so you can reference it for the following section. {$testvar}<br>
-<iframe src="https://player.vimeo.com/video/334668989" width="640" height="360" frameborder="0" allow="autoplay; fullscreen" allowfullscreen></iframe>
-
-
-l:
-t: jump
-- goto main_survey
+#
+# l: vid_3_1
+# t: info
+# q: Please open this video in a new tab, so you can reference it for the following section. {$testvar}<br>
+# <iframe src="https://player.vimeo.com/video/334669043" width="640" height="360" frameborder="0" allow="autoplay; fullscreen" allowfullscreen></iframe>
+#
+#
+# l:
+# t: jump
+# - goto main_survey
+#
+# ## video 2 ########################
+#
+# l: vid_3_2
+# t: info
+# q: Please open this video in a new tab, so you can reference it for the following section. {$testvar}<br>
+# <iframe src="https://player.vimeo.com/video/334669066" width="640" height="360" frameborder="0" allow="autoplay; fullscreen" allowfullscreen></iframe>
+#
+#
+# l:
+# t: jump
+# - goto main_survey
+#
+#
+# ## video 3 ########################
+#
+# l: vid_3_0
+# t: info
+# q: Please open this video in a new tab, so you can reference it for the following section. {$testvar}<br>
+# <iframe src="https://player.vimeo.com/video/334668989" width="640" height="360" frameborder="0" allow="autoplay; fullscreen" allowfullscreen></iframe>
+#
+#
+# l:
+# t: jump
+# - goto main_survey
 
 ## MAIN SURVEY ########################
 
@@ -65,7 +73,8 @@ scale: agree
 - Agree strongly
 
 l: main_survey
-q: Please watch this video, then answer the questions below. <br>
+q: Please watch this video, then answer the questions below. You can watch the video as many times as you like. The video has no sound.<br>
+This video is of a speaker who is mid-conversation, currently talking about a group of people. <br>
 <iframe src="https://player.vimeo.com/video/{$testvar}" width="640" height="360" frameborder="0" allow="autoplay; fullscreen" allowfullscreen></iframe>
 The speaker is talking about a group of people. Based on your interpretation of the speaker's gestures, please rate the following on how much you believe...
 t: scale agree
