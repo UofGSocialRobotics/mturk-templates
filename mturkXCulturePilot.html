@@ -132,19 +132,18 @@ function getRandomVideo() {
   return(video_link)
 }
 var params = [
+  "many",
+  "members",
+  "conflict",
   "tension",
-  "getalong",
-  "buttheads",
-  "unified",
-  "disagreement",
+  "open",
+  "accessible",
+  "control",
+  "dominant",
   "worktogether",
   "goal",
-  "communicate",
-  "cometogether",
-  "overlap",
-  "close",
-  "protected",
-  "control"
+  "sure",
+  "confident"
 ];
 function validateForm() {
   // check free response area has enough words.
@@ -225,7 +224,7 @@ Please <b>do not</b> pay attention to the speaker's face -- pay attention only t
 	<tbody>
 		<tr>
 			<td>
-			<div align="center" style="padding:15px" class="label2">She is talking about a group of people. What do you think she is saying about them? Please write 2-3 sentences (at least 10 words).</div>
+			<div align="center" style="padding:15px" class="label2">The speaker is talking about a group of people. What do you think this group is like? Please write 2-3 sentences (at least 10 words).</div>
 			</td>
 			<br>
 			<td><input name="freeResponseArea" style="width:400px; height:200px" type="text" value="" /></td>
@@ -235,11 +234,143 @@ Please <b>do not</b> pay attention to the speaker's face -- pay attention only t
 
 
 <div align="center" id="dataContainer">
-<b>The speaker is talking about a group of people. Please make the following inferences based on her gesture.</b>
+<b>The speaker is talking about a group of people. Please make the following inferences based on their gesture.</b>
 
 
 <!-- TODO RANDOMIZE THIS ORDER!!!!!!! -->
 <div>
+<!-- Many -->
+<div id="ratingArea" width="400">
+  <div align="center" class="label2">
+    On a scale from 1 to 7, how much do you think this group is made up of <b>many people.</b>?
+  </div>
+  <table>
+  	<tbody>
+  		<tr>
+  			<td align="center" class="attributeDiv">Not at all</td>
+  			<td align="center" class="attributeDiv">1</td>
+  			<td align="center" class="attributeDiv">2</td>
+  			<td align="center" class="attributeDiv">3</td>
+  			<td align="center" class="attributeDiv">4</td>
+  			<td align="center" class="attributeDiv">5</td>
+  			<td align="center" class="attributeDiv">6</td>
+  			<td align="center" class="attributeDiv">7</td>
+  			<td align="center" class="attributeDiv">Very much</td>
+  		</tr>
+  		<tr>
+  			<td>&nbsp;</td>
+  			<td><input name="many" type="radio" value="1" /></td>
+  			<td><input name="many" type="radio" value="2" /></td>
+  			<td><input name="many" type="radio" value="3" /></td>
+  			<td><input name="many" type="radio" value="4" /></td>
+  			<td><input name="many" type="radio" value="5" /></td>
+  			<td><input name="many" type="radio" value="6" /></td>
+  			<td><input name="many" type="radio" value="7" /></td>
+  			<td>&nbsp;</td>
+  		</tr>
+  	</tbody>
+  </table>
+  </div>
+
+<!-- Conflict -->
+<div id="ratingArea" width="400">
+  <div align="center" class="label2">
+    On a scale from 1 to 7, how much do you think this group of people is experiencing <b>conflict</b>?
+  </div>
+  <table>
+  	<tbody>
+  		<tr>
+  			<td align="center" class="attributeDiv">Not at all</td>
+  			<td align="center" class="attributeDiv">1</td>
+  			<td align="center" class="attributeDiv">2</td>
+  			<td align="center" class="attributeDiv">3</td>
+  			<td align="center" class="attributeDiv">4</td>
+  			<td align="center" class="attributeDiv">5</td>
+  			<td align="center" class="attributeDiv">6</td>
+  			<td align="center" class="attributeDiv">7</td>
+  			<td align="center" class="attributeDiv">Very much</td>
+  		</tr>
+  		<tr>
+  			<td>&nbsp;</td>
+  			<td><input name="conflict" type="radio" value="1" /></td>
+  			<td><input name="conflict" type="radio" value="2" /></td>
+  			<td><input name="conflict" type="radio" value="3" /></td>
+  			<td><input name="conflict" type="radio" value="4" /></td>
+  			<td><input name="conflict" type="radio" value="5" /></td>
+  			<td><input name="conflict" type="radio" value="6" /></td>
+  			<td><input name="conflict" type="radio" value="7" /></td>
+  			<td>&nbsp;</td>
+  		</tr>
+  	</tbody>
+  </table>
+  </div>
+
+<!-- Open -->
+<div id="ratingArea" width="400">
+  <div align="center" class="label2">
+    On a scale from 1 to 7, how much do you think this group of people is <b>open to outsiders</b>?
+  </div>
+  <table>
+  	<tbody>
+  		<tr>
+  			<td align="center" class="attributeDiv">Not at all</td>
+  			<td align="center" class="attributeDiv">1</td>
+  			<td align="center" class="attributeDiv">2</td>
+  			<td align="center" class="attributeDiv">3</td>
+  			<td align="center" class="attributeDiv">4</td>
+  			<td align="center" class="attributeDiv">5</td>
+  			<td align="center" class="attributeDiv">6</td>
+  			<td align="center" class="attributeDiv">7</td>
+  			<td align="center" class="attributeDiv">Very much</td>
+  		</tr>
+  		<tr>
+  			<td>&nbsp;</td>
+  			<td><input name="open" type="radio" value="1" /></td>
+  			<td><input name="open" type="radio" value="2" /></td>
+  			<td><input name="open" type="radio" value="3" /></td>
+  			<td><input name="open" type="radio" value="4" /></td>
+  			<td><input name="open" type="radio" value="5" /></td>
+  			<td><input name="open" type="radio" value="6" /></td>
+  			<td><input name="open" type="radio" value="7" /></td>
+  			<td>&nbsp;</td>
+  		</tr>
+  	</tbody>
+  </table>
+</div>
+
+<!-- Dominant -->
+<div id="ratingArea" width="400">
+  <div align="center" class="label2">
+    On a scale from 1 to 7, how much do you think someone is definitively <b>dominant</b> over this group of people?
+  </div>
+  <table>
+  	<tbody>
+  		<tr>
+  			<td align="center" class="attributeDiv">Not at all</td>
+  			<td align="center" class="attributeDiv">1</td>
+  			<td align="center" class="attributeDiv">2</td>
+  			<td align="center" class="attributeDiv">3</td>
+  			<td align="center" class="attributeDiv">4</td>
+  			<td align="center" class="attributeDiv">5</td>
+  			<td align="center" class="attributeDiv">6</td>
+  			<td align="center" class="attributeDiv">7</td>
+  			<td align="center" class="attributeDiv">Very much</td>
+  		</tr>
+  		<tr>
+  			<td>&nbsp;</td>
+  			<td><input name="dominant" type="radio" value="1" /></td>
+  			<td><input name="dominant" type="radio" value="2" /></td>
+  			<td><input name="dominant" type="radio" value="3" /></td>
+  			<td><input name="dominant" type="radio" value="4" /></td>
+  			<td><input name="dominant" type="radio" value="5" /></td>
+  			<td><input name="dominant" type="radio" value="6" /></td>
+  			<td><input name="dominant" type="radio" value="7" /></td>
+  			<td>&nbsp;</td>
+  		</tr>
+  	</tbody>
+  </table>
+</div>
+
 <!-- Work Together -->
 <div id="ratingArea" width="400">
   <div align="center" class="label2">
@@ -271,12 +402,12 @@ Please <b>do not</b> pay attention to the speaker's face -- pay attention only t
   		</tr>
   	</tbody>
   </table>
-  </div>
+</div>
 
-<!-- Common Goal -->
+<!-- Confident -->
 <div id="ratingArea" width="400">
   <div align="center" class="label2">
-    On a scale from 1 to 7, how much do you think this group of people has <b>a common goal</b>?
+    On a scale from 1 to 7, how much do you think the actions of this group are taken <b>confidently</b>?
   </div>
   <table>
   	<tbody>
@@ -293,23 +424,56 @@ Please <b>do not</b> pay attention to the speaker's face -- pay attention only t
   		</tr>
   		<tr>
   			<td>&nbsp;</td>
-  			<td><input name="goal" type="radio" value="1" /></td>
-  			<td><input name="goal" type="radio" value="2" /></td>
-  			<td><input name="goal" type="radio" value="3" /></td>
-  			<td><input name="goal" type="radio" value="4" /></td>
-  			<td><input name="goal" type="radio" value="5" /></td>
-  			<td><input name="goal" type="radio" value="6" /></td>
-  			<td><input name="goal" type="radio" value="7" /></td>
+  			<td><input name="confident" type="radio" value="1" /></td>
+  			<td><input name="confident" type="radio" value="2" /></td>
+  			<td><input name="confident" type="radio" value="3" /></td>
+  			<td><input name="confident" type="radio" value="4" /></td>
+  			<td><input name="confident" type="radio" value="5" /></td>
+  			<td><input name="confident" type="radio" value="6" /></td>
+  			<td><input name="confident" type="radio" value="7" /></td>
   			<td>&nbsp;</td>
   		</tr>
   	</tbody>
   </table>
+</div>
+
+<!-- Members -->
+<div id="ratingArea" width="400">
+  <div align="center" class="label2">
+    On a scale from 1 to 7, how much do you think there are <b>many members</b> of this group?
   </div>
+  <table>
+  	<tbody>
+  		<tr>
+  			<td align="center" class="attributeDiv">Not at all</td>
+  			<td align="center" class="attributeDiv">1</td>
+  			<td align="center" class="attributeDiv">2</td>
+  			<td align="center" class="attributeDiv">3</td>
+  			<td align="center" class="attributeDiv">4</td>
+  			<td align="center" class="attributeDiv">5</td>
+  			<td align="center" class="attributeDiv">6</td>
+  			<td align="center" class="attributeDiv">7</td>
+  			<td align="center" class="attributeDiv">Very much</td>
+  		</tr>
+  		<tr>
+  			<td>&nbsp;</td>
+  			<td><input name="members" type="radio" value="1" /></td>
+  			<td><input name="members" type="radio" value="2" /></td>
+  			<td><input name="members" type="radio" value="3" /></td>
+  			<td><input name="members" type="radio" value="4" /></td>
+  			<td><input name="members" type="radio" value="5" /></td>
+  			<td><input name="members" type="radio" value="6" /></td>
+  			<td><input name="members" type="radio" value="7" /></td>
+  			<td>&nbsp;</td>
+  		</tr>
+  	</tbody>
+  </table>
+</div>
 
 <!-- Tension -->
 <div id="ratingArea" width="400">
   <div align="center" class="label2">
-    On a scale from 1 to 7, how much do you think there is <b>tension</b> within this group of people?
+    On a scale from 1 to 7, how much do you think there is <b>tension</b> in this group of people?
   </div>
   <table>
   	<tbody>
@@ -339,176 +503,11 @@ Please <b>do not</b> pay attention to the speaker's face -- pay attention only t
   </table>
 </div>
 
-<!-- Get Along -->
-<div id="ratingArea" width="400">
-  <div align="center" class="label2">
-    On a scale from 1 to 7, how much do you think this group of people <b>gets along</b>?
-  </div>
-  <table>
-  	<tbody>
-  		<tr>
-  			<td align="center" class="attributeDiv">Not at all</td>
-  			<td align="center" class="attributeDiv">1</td>
-  			<td align="center" class="attributeDiv">2</td>
-  			<td align="center" class="attributeDiv">3</td>
-  			<td align="center" class="attributeDiv">4</td>
-  			<td align="center" class="attributeDiv">5</td>
-  			<td align="center" class="attributeDiv">6</td>
-  			<td align="center" class="attributeDiv">7</td>
-  			<td align="center" class="attributeDiv">Very much</td>
-  		</tr>
-  		<tr>
-  			<td>&nbsp;</td>
-  			<td><input name="getalong" type="radio" value="1" /></td>
-  			<td><input name="getalong" type="radio" value="2" /></td>
-  			<td><input name="getalong" type="radio" value="3" /></td>
-  			<td><input name="getalong" type="radio" value="4" /></td>
-  			<td><input name="getalong" type="radio" value="5" /></td>
-  			<td><input name="getalong" type="radio" value="6" /></td>
-  			<td><input name="getalong" type="radio" value="7" /></td>
-  			<td>&nbsp;</td>
-  		</tr>
-  	</tbody>
-  </table>
-</div>
 
-<!-- Unified -->
-<div id="ratingArea" width="400">
-  <div align="center" class="label2">
-    On a scale from 1 to 7, how <b>unified</b> do you think this group of people is?
-  </div>
-  <table>
-  	<tbody>
-  		<tr>
-  			<td align="center" class="attributeDiv">Not at all</td>
-  			<td align="center" class="attributeDiv">1</td>
-  			<td align="center" class="attributeDiv">2</td>
-  			<td align="center" class="attributeDiv">3</td>
-  			<td align="center" class="attributeDiv">4</td>
-  			<td align="center" class="attributeDiv">5</td>
-  			<td align="center" class="attributeDiv">6</td>
-  			<td align="center" class="attributeDiv">7</td>
-  			<td align="center" class="attributeDiv">Very much</td>
-  		</tr>
-  		<tr>
-  			<td>&nbsp;</td>
-  			<td><input name="unified" type="radio" value="1" /></td>
-  			<td><input name="unified" type="radio" value="2" /></td>
-  			<td><input name="unified" type="radio" value="3" /></td>
-  			<td><input name="unified" type="radio" value="4" /></td>
-  			<td><input name="unified" type="radio" value="5" /></td>
-  			<td><input name="unified" type="radio" value="6" /></td>
-  			<td><input name="unified" type="radio" value="7" /></td>
-  			<td>&nbsp;</td>
-  		</tr>
-  	</tbody>
-  </table>
-</div>
-
-<!-- Disagree -->
-<div id="ratingArea" width="400">
-  <div align="center" class="label2">
-    On a scale from 1 to 7, how much <b>disagreement</b> do you think there is within this group of people?
-  </div>
-  <table>
-  	<tbody>
-  		<tr>
-  			<td align="center" class="attributeDiv">None at all</td>
-  			<td align="center" class="attributeDiv">1</td>
-  			<td align="center" class="attributeDiv">2</td>
-  			<td align="center" class="attributeDiv">3</td>
-  			<td align="center" class="attributeDiv">4</td>
-  			<td align="center" class="attributeDiv">5</td>
-  			<td align="center" class="attributeDiv">6</td>
-  			<td align="center" class="attributeDiv">7</td>
-  			<td align="center" class="attributeDiv">A lot</td>
-  		</tr>
-  		<tr>
-  			<td>&nbsp;</td>
-  			<td><input name="disagreement" type="radio" value="1" /></td>
-  			<td><input name="disagreement" type="radio" value="2" /></td>
-  			<td><input name="disagreement" type="radio" value="3" /></td>
-  			<td><input name="disagreement" type="radio" value="4" /></td>
-  			<td><input name="disagreement" type="radio" value="5" /></td>
-  			<td><input name="disagreement" type="radio" value="6" /></td>
-  			<td><input name="disagreement" type="radio" value="7" /></td>
-  			<td>&nbsp;</td>
-  		</tr>
-  	</tbody>
-  </table>
-</div>
-
-<!-- Butt Heads -->
-<div id="ratingArea" width="400">
-  <div align="center" class="label2">
-    On a scale from 1 to 7, how much do you think this group of people <b>butts heads</b>?
-  </div>
-  <table>
-  	<tbody>
-  		<tr>
-  			<td align="center" class="attributeDiv">Not at all</td>
-  			<td align="center" class="attributeDiv">1</td>
-  			<td align="center" class="attributeDiv">2</td>
-  			<td align="center" class="attributeDiv">3</td>
-  			<td align="center" class="attributeDiv">4</td>
-  			<td align="center" class="attributeDiv">5</td>
-  			<td align="center" class="attributeDiv">6</td>
-  			<td align="center" class="attributeDiv">7</td>
-  			<td align="center" class="attributeDiv">Very much</td>
-  		</tr>
-  		<tr>
-  			<td>&nbsp;</td>
-  			<td><input name="buttheads" type="radio" value="1" /></td>
-  			<td><input name="buttheads" type="radio" value="2" /></td>
-  			<td><input name="buttheads" type="radio" value="3" /></td>
-  			<td><input name="buttheads" type="radio" value="4" /></td>
-  			<td><input name="buttheads" type="radio" value="5" /></td>
-  			<td><input name="buttheads" type="radio" value="6" /></td>
-  			<td><input name="buttheads" type="radio" value="7" /></td>
-  			<td>&nbsp;</td>
-  		</tr>
-  	</tbody>
-  </table>
-</div>
-
-<!-- Communicate -->
-<div id="ratingArea" width="400">
-  <div align="center" class="label2">
-    On a scale from 1 to 7, how well do you think this group of people is <b>communicating</b>?
-  </div>
-  <table>
-  	<tbody>
-  		<tr>
-  			<td align="center" class="attributeDiv">Not at all</td>
-  			<td align="center" class="attributeDiv">1</td>
-  			<td align="center" class="attributeDiv">2</td>
-  			<td align="center" class="attributeDiv">3</td>
-  			<td align="center" class="attributeDiv">4</td>
-  			<td align="center" class="attributeDiv">5</td>
-  			<td align="center" class="attributeDiv">6</td>
-  			<td align="center" class="attributeDiv">7</td>
-  			<td align="center" class="attributeDiv">Very much</td>
-  		</tr>
-  		<tr>
-  			<td>&nbsp;</td>
-  			<td><input name="communicate" type="radio" value="1" /></td>
-  			<td><input name="communicate" type="radio" value="2" /></td>
-  			<td><input name="communicate" type="radio" value="3" /></td>
-  			<td><input name="communicate" type="radio" value="4" /></td>
-  			<td><input name="communicate" type="radio" value="5" /></td>
-  			<td><input name="communicate" type="radio" value="6" /></td>
-  			<td><input name="communicate" type="radio" value="7" /></td>
-  			<td>&nbsp;</td>
-  		</tr>
-  	</tbody>
-  </table>
-</div>
-
-
-  <!-- Come Together -->
+  <!-- Accessible -->
   <div id="ratingArea" width="400">
       <div align="center" class="label2">
-        On a scale from 1 to 7, how much do you think this group of people is <b>coming together</b>?
+        On a scale from 1 to 7, how much do you think non-members find this group <b>accessible</b>?
       </div>
       <table>
       	<tbody>
@@ -525,28 +524,28 @@ Please <b>do not</b> pay attention to the speaker's face -- pay attention only t
       		</tr>
       		<tr>
       			<td>&nbsp;</td>
-      			<td><input name="cometogether" type="radio" value="1" /></td>
-      			<td><input name="cometogether" type="radio" value="2" /></td>
-      			<td><input name="cometogether" type="radio" value="3" /></td>
-      			<td><input name="cometogether" type="radio" value="4" /></td>
-      			<td><input name="cometogether" type="radio" value="5" /></td>
-      			<td><input name="cometogether" type="radio" value="6" /></td>
-      			<td><input name="cometogether" type="radio" value="7" /></td>
+      			<td><input name="accessible" type="radio" value="1" /></td>
+      			<td><input name="accessible" type="radio" value="2" /></td>
+      			<td><input name="accessible" type="radio" value="3" /></td>
+      			<td><input name="accessible" type="radio" value="4" /></td>
+      			<td><input name="accessible" type="radio" value="5" /></td>
+      			<td><input name="accessible" type="radio" value="6" /></td>
+      			<td><input name="accessible" type="radio" value="7" /></td>
       			<td>&nbsp;</td>
       		</tr>
       	</tbody>
       </table>
     </div>
 
-<!-- Overlap -->
+<!-- Sure -->
 <div id="ratingArea" width="400">
   <div align="center" class="label2">
-    On a scale from 1 to 7, how many <b>overlapping traits</b> do you think people in this group have?
+    On a scale from 1 to 7, how much do you think this group is <b>very sure</b> in their decisions?
   </div>
   <table>
   	<tbody>
   		<tr>
-  			<td align="center" class="attributeDiv">None at all</td>
+  			<td align="center" class="attributeDiv">Not at all</td>
   			<td align="center" class="attributeDiv">1</td>
   			<td align="center" class="attributeDiv">2</td>
   			<td align="center" class="attributeDiv">3</td>
@@ -554,17 +553,51 @@ Please <b>do not</b> pay attention to the speaker's face -- pay attention only t
   			<td align="center" class="attributeDiv">5</td>
   			<td align="center" class="attributeDiv">6</td>
   			<td align="center" class="attributeDiv">7</td>
-  			<td align="center" class="attributeDiv">Very many</td>
+  			<td align="center" class="attributeDiv">Very much</td>
   		</tr>
   		<tr>
   			<td>&nbsp;</td>
-  			<td><input name="overlap" type="radio" value="1" /></td>
-  			<td><input name="overlap" type="radio" value="2" /></td>
-  			<td><input name="overlap" type="radio" value="3" /></td>
-  			<td><input name="overlap" type="radio" value="4" /></td>
-  			<td><input name="overlap" type="radio" value="5" /></td>
-  			<td><input name="overlap" type="radio" value="6" /></td>
-  			<td><input name="overlap" type="radio" value="7" /></td>
+  			<td><input name="sure" type="radio" value="1" /></td>
+  			<td><input name="sure" type="radio" value="2" /></td>
+  			<td><input name="sure" type="radio" value="3" /></td>
+  			<td><input name="sure" type="radio" value="4" /></td>
+  			<td><input name="sure" type="radio" value="5" /></td>
+  			<td><input name="sure" type="radio" value="6" /></td>
+  			<td><input name="sure" type="radio" value="7" /></td>
+  			<td>&nbsp;</td>
+  		</tr>
+  	</tbody>
+  </table>
+</div>
+
+
+<!-- Goals -->
+<div id="ratingArea" width="400">
+  <div align="center" class="label2">
+    On a scale from 1 to 7, how much do you think there are <b>common unifying goals</b> within this group of people?
+  </div>
+  <table>
+  	<tbody>
+  		<tr>
+  			<td align="center" class="attributeDiv">Not at all</td>
+  			<td align="center" class="attributeDiv">1</td>
+  			<td align="center" class="attributeDiv">2</td>
+  			<td align="center" class="attributeDiv">3</td>
+  			<td align="center" class="attributeDiv">4</td>
+  			<td align="center" class="attributeDiv">5</td>
+  			<td align="center" class="attributeDiv">6</td>
+  			<td align="center" class="attributeDiv">7</td>
+  			<td align="center" class="attributeDiv">Very much</td>
+  		</tr>
+  		<tr>
+  			<td>&nbsp;</td>
+  			<td><input name="goal" type="radio" value="1" /></td>
+  			<td><input name="goal" type="radio" value="2" /></td>
+  			<td><input name="goal" type="radio" value="3" /></td>
+  			<td><input name="goal" type="radio" value="4" /></td>
+  			<td><input name="goal" type="radio" value="5" /></td>
+  			<td><input name="goal" type="radio" value="6" /></td>
+  			<td><input name="goal" type="radio" value="7" /></td>
   			<td>&nbsp;</td>
   		</tr>
   	</tbody>
@@ -575,12 +608,12 @@ Please <b>do not</b> pay attention to the speaker's face -- pay attention only t
 <!-- Control -->
 <div id="ratingArea" width="400">
   <div align="center" class="label2">
-    On a scale from 1 to 7, how <b>controlled</b> do you think this group of people is?
+    On a scale from 1 to 7, how much do you think this group of people is <b>tightly controlled</b>?
   </div>
   <table>
   	<tbody>
   		<tr>
-  			<td align="center" class="attributeDiv">None at all</td>
+  			<td align="center" class="attributeDiv">Not at all</td>
   			<td align="center" class="attributeDiv">1</td>
   			<td align="center" class="attributeDiv">2</td>
   			<td align="center" class="attributeDiv">3</td>
@@ -588,7 +621,7 @@ Please <b>do not</b> pay attention to the speaker's face -- pay attention only t
   			<td align="center" class="attributeDiv">5</td>
   			<td align="center" class="attributeDiv">6</td>
   			<td align="center" class="attributeDiv">7</td>
-  			<td align="center" class="attributeDiv">Very many</td>
+  			<td align="center" class="attributeDiv">Very much</td>
   		</tr>
   		<tr>
   			<td>&nbsp;</td>
@@ -599,73 +632,6 @@ Please <b>do not</b> pay attention to the speaker's face -- pay attention only t
   			<td><input name="control" type="radio" value="5" /></td>
   			<td><input name="control" type="radio" value="6" /></td>
   			<td><input name="control" type="radio" value="7" /></td>
-  			<td>&nbsp;</td>
-  		</tr>
-  	</tbody>
-  </table>
-</div>
-
-
-<!-- Close knit -->
-<div id="ratingArea" width="400">
-  <div align="center" class="label2">
-    On a scale from 1 to 7, how <b>close knit</b> do you think this group of people is?
-  </div>
-  <table>
-  	<tbody>
-  		<tr>
-  			<td align="center" class="attributeDiv">None at all</td>
-  			<td align="center" class="attributeDiv">1</td>
-  			<td align="center" class="attributeDiv">2</td>
-  			<td align="center" class="attributeDiv">3</td>
-  			<td align="center" class="attributeDiv">4</td>
-  			<td align="center" class="attributeDiv">5</td>
-  			<td align="center" class="attributeDiv">6</td>
-  			<td align="center" class="attributeDiv">7</td>
-  			<td align="center" class="attributeDiv">Very many</td>
-  		</tr>
-  		<tr>
-  			<td>&nbsp;</td>
-  			<td><input name="close" type="radio" value="1" /></td>
-  			<td><input name="close" type="radio" value="2" /></td>
-  			<td><input name="close" type="radio" value="3" /></td>
-  			<td><input name="close" type="radio" value="4" /></td>
-  			<td><input name="close" type="radio" value="5" /></td>
-  			<td><input name="close" type="radio" value="6" /></td>
-  			<td><input name="close" type="radio" value="7" /></td>
-  			<td>&nbsp;</td>
-  		</tr>
-  	</tbody>
-  </table>
-</div>
-
-<!-- Protected -->
-<div id="ratingArea" width="400">
-  <div align="center" class="label2">
-    On a scale from 1 to 7, how <b>protected</b> do you think this group of people is?
-  </div>
-  <table>
-  	<tbody>
-  		<tr>
-  			<td align="center" class="attributeDiv">None at all</td>
-  			<td align="center" class="attributeDiv">1</td>
-  			<td align="center" class="attributeDiv">2</td>
-  			<td align="center" class="attributeDiv">3</td>
-  			<td align="center" class="attributeDiv">4</td>
-  			<td align="center" class="attributeDiv">5</td>
-  			<td align="center" class="attributeDiv">6</td>
-  			<td align="center" class="attributeDiv">7</td>
-  			<td align="center" class="attributeDiv">Very many</td>
-  		</tr>
-  		<tr>
-  			<td>&nbsp;</td>
-  			<td><input name="protected" type="radio" value="1" /></td>
-  			<td><input name="protected" type="radio" value="2" /></td>
-  			<td><input name="protected" type="radio" value="3" /></td>
-  			<td><input name="protected" type="radio" value="4" /></td>
-  			<td><input name="protected" type="radio" value="5" /></td>
-  			<td><input name="protected" type="radio" value="6" /></td>
-  			<td><input name="protected" type="radio" value="7" /></td>
   			<td>&nbsp;</td>
   		</tr>
   	</tbody>

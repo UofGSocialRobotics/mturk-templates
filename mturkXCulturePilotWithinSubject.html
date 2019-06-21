@@ -77,13 +77,24 @@
 </style>
 
 <script type='text/javascript'>
+questions = []
 var talking_about_people = false
 window.onload = function() {
   document.getElementById('add').setAttribute('onclick', 'return validateForm()');
+  orderQuestions();
   video_link = getRandomVideo();
   document.getElementById('vid_id').setAttribute('value', video_link)
   document.getElementById('video1').setAttribute('src', video_link)
 }
+
+
+function orderQuestions() {
+  questions = [
+    
+  ]
+}
+
+
 function getRandomVideo() {
   // THE BELOW RANDOMIZES INTO A TREATMENT CONDITION
   // DEPENDING ON THE EXPERIMENT THE "rtext[i]" RANDOMIZATION COULD BE USED TO DO MULTIPLE THINGS
@@ -141,7 +152,6 @@ var params = [
   "communicate",
   "cometogether",
   "overlap",
-  "close",
   "protected",
   "control"
 ];
@@ -174,6 +184,7 @@ function validateForm() {
   quant_checks = true;
   return quant_checks;
 }
+
 function hideShowInstructions(){
 var instructBox = document.getElementById('instructionBox');
 if(instructBox.style.display == 'none')
@@ -604,39 +615,6 @@ Please <b>do not</b> pay attention to the speaker's face -- pay attention only t
   </table>
 </div>
 
-
-<!-- Close knit -->
-<div id="ratingArea" width="400">
-  <div align="center" class="label2">
-    On a scale from 1 to 7, how <b>close knit</b> do you think this group of people is?
-  </div>
-  <table>
-  	<tbody>
-  		<tr>
-  			<td align="center" class="attributeDiv">None at all</td>
-  			<td align="center" class="attributeDiv">1</td>
-  			<td align="center" class="attributeDiv">2</td>
-  			<td align="center" class="attributeDiv">3</td>
-  			<td align="center" class="attributeDiv">4</td>
-  			<td align="center" class="attributeDiv">5</td>
-  			<td align="center" class="attributeDiv">6</td>
-  			<td align="center" class="attributeDiv">7</td>
-  			<td align="center" class="attributeDiv">Very many</td>
-  		</tr>
-  		<tr>
-  			<td>&nbsp;</td>
-  			<td><input name="close" type="radio" value="1" /></td>
-  			<td><input name="close" type="radio" value="2" /></td>
-  			<td><input name="close" type="radio" value="3" /></td>
-  			<td><input name="close" type="radio" value="4" /></td>
-  			<td><input name="close" type="radio" value="5" /></td>
-  			<td><input name="close" type="radio" value="6" /></td>
-  			<td><input name="close" type="radio" value="7" /></td>
-  			<td>&nbsp;</td>
-  		</tr>
-  	</tbody>
-  </table>
-</div>
 
 <!-- Protected -->
 <div id="ratingArea" width="400">

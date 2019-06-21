@@ -1,0 +1,77 @@
+# check the large survey-library for ready-to-run examples you can
+# cut and paste here
+
+l: chooserandom
+t: set
+- random from 1 2 3
+
+l:
+t: jump
+- if $chooserandom == 1 then goto vid_3_1
+- if $chooserandom == 2 then goto vid_3_2
+- if $chooserandom == 3 then goto vid_3_0
+
+## video 1 ########################
+
+l: vid_3_1
+t: info
+q: Please open this video in a new tab, so you can reference it for the following section.<br>
+<iframe src="https://player.vimeo.com/video/334669043" width="640" height="360" frameborder="0" allow="autoplay; fullscreen" allowfullscreen></iframe>
+
+
+l:
+t: jump
+- goto main_survey
+
+## video 2 ########################
+
+l: vid_3_2
+t: info
+q: Please open this video in a new tab, so you can reference it for the following section.<br>
+<iframe src="https://player.vimeo.com/video/334669066" width="640" height="360" frameborder="0" allow="autoplay; fullscreen" allowfullscreen></iframe>
+
+
+l:
+t: jump
+- goto main_survey
+
+
+## video 3 ########################
+
+l: vid_3_0
+t: info
+q: Please open this video in a new tab, so you can reference it for the following section.<br>
+<iframe src="https://player.vimeo.com/video/334668989" width="640" height="360" frameborder="0" allow="autoplay; fullscreen" allowfullscreen></iframe>
+
+
+l:
+t: jump
+- goto main_survey
+
+## MAIN SURVEY ########################
+
+scale: agree
+- Disagree strongly
+- Disagree moderately
+- Disagree a little
+- Neither agree nor disagree
+- Agree a little
+- Agree moderately
+- Agree strongly
+
+l: main_survey
+q: The speaker is talking about a group of people. Based on your interpretation of the speaker's gestures, please rate the following on how much you believe...
+t: scale agree
+o: random
+- This group is made up of many people.
+- There are many members of this group.
+- This group of people is experiencing conflict.
+- There is tension in this group of people.
+- This group of people is open to outsiders.
+- Non-members find this group accessible.
+- This group of people is tightly controlled.
+- Someone is definitively dominant over this group of people.
+- This group of people is working together.
+- There are common unifying goals within this group of people.
+- This group is very sure in their decisions.
+- The actions of this group are taken confidently.
